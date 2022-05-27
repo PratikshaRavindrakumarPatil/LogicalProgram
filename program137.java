@@ -54,6 +54,10 @@ class Number
 				
 				iSum=iSum+iCnt;
 			}
+			if(iSum>iNo)
+			{
+				break;
+			}
 		}
 		
 		if(iSum==iNo)
@@ -67,7 +71,7 @@ class Number
 	}
 }
 
-class program136
+class program137
 {
 	public static void main(String arg[])
 	{

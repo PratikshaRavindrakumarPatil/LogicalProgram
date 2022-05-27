@@ -2,15 +2,16 @@
 OUTPUT:
 
 Enter number :
-98345
-Value is : 98345
-Total digits are:5
-
+87234
+Value is : 87234
+Addition of even digit is:14
 
 Enter number :
-37
-Value is : 37
-Total digits are:2
+-200
+Value is : -200
+Addition of even digit is:2
+
+
 
 */
 import java.lang.*;
@@ -32,10 +33,10 @@ class Number
         System.out.println("Value is : "+this.iNo);
     }
 
-    public int CountDigit()
+    public int SumEvenDigit()
 	{
-		
-		int iCnt=0;
+		int iDigit=0;
+		int iSum=0;
 		if(iNo<0)
 		{
 			iNo=-iNo;
@@ -43,15 +44,18 @@ class Number
 		
 		while(iNo!=0)
 		{
-			
-			iCnt++;
+			iDigit=iNo%10;
+			if(iDigit%2==0)
+			{
+				iSum=iSum+iDigit;
+			}
 			iNo=iNo/10;
 		}
-		return iCnt;
+		return iSum;
 	}
 }
 
-class program145
+class program149
 {
     public static void main(String b[])
     {
@@ -62,7 +66,7 @@ class program145
             nobj.Accept();
             nobj.Display();
 
-            iRet=nobj.CountDigit();
-			System.out.println("Total digits are:"+iRet);
+            iRet=nobj.SumEvenDigit();
+			System.out.println("Addition of even digit is:"+iRet);
     }
 }

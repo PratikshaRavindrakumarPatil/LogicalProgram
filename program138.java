@@ -47,7 +47,7 @@ class Number
 			iNo=-iNo;
 		}
 		
-		for(iCnt=1;iCnt<=(iNo/2);iCnt++)
+		for(iCnt=1;iCnt<=(iNo/2) && (iSum<=iNo);iCnt++)
 		{
 			if((iNo%iCnt)==0)
 			{
@@ -67,7 +67,7 @@ class Number
 	}
 }
 
-class program136
+class program138
 {
 	public static void main(String arg[])
 	{

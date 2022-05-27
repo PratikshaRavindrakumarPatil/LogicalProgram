@@ -2,19 +2,14 @@
 OUTPUT:
 
 Enter the number:
-6
-Entered number is:6
-Given number is perfect number.
+11
+Entered number is:11
+Given number is prime
 
 Enter the number:
-12
-Entered number is:12
-Given number is not perfect number.
-
-Enter the number:
-28
-Entered number is:28
-Given number is perfect number.
+21
+Entered number is:21
+Given number is not prime
 
 */
 
@@ -38,25 +33,24 @@ class Number
 		System.out.println("Entered number is:"+this.iNo);
 	}
 	
-	public boolean SumFactor()
+	public boolean CheckPrime()
 	{
 		int iCnt=0;
-		int iSum=0;
+		int iCount=0;
 		if(iNo<0)
 		{
 			iNo=-iNo;
 		}
 		
-		for(iCnt=1;iCnt<=(iNo/2);iCnt++)
+		for(iCnt=1;iCnt<=iNo;iCnt++)
 		{
 			if((iNo%iCnt)==0)
 			{
-				
-				iSum=iSum+iCnt;
+				iCount++;
 			}
 		}
 		
-		if(iSum==iNo)
+		if(iCount==2)
 		{
 			return true;
 		}
@@ -64,27 +58,29 @@ class Number
 		{
 			return false;
 		}
+		
 	}
 }
 
-class program136
+class program140
 {
 	public static void main(String arg[])
 	{
 		Number nobj=new Number();
-		boolean bRet=false;
 		
+		boolean bRet=false;
 		nobj.Accept();
 		nobj.Display();
-		bRet=nobj.SumFactor();
+		bRet=nobj.CheckPrime();
 		
 		if(bRet==true)
 		{
-			System.out.println("Given number is perfect number.");
+			System.out.println("Given number is prime");
 		}
 		else
 		{
-			System.out.println("Given number is not perfect number.");
+			System.out.println("Given number is not prime");
 		}
+		
 	}
 }

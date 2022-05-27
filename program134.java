@@ -2,19 +2,15 @@
 OUTPUT:
 
 Enter the number:
-6
-Entered number is:6
-Given number is perfect number.
-
-Enter the number:
 12
 Entered number is:12
-Given number is not perfect number.
+2       4       6
 
 Enter the number:
-28
-Entered number is:28
-Given number is perfect number.
+-20
+Entered number is:-20
+2       4       10
+
 
 */
 
@@ -38,53 +34,36 @@ class Number
 		System.out.println("Entered number is:"+this.iNo);
 	}
 	
-	public boolean SumFactor()
+	public void EvenFactor()
 	{
 		int iCnt=0;
-		int iSum=0;
 		if(iNo<0)
 		{
 			iNo=-iNo;
 		}
 		
-		for(iCnt=1;iCnt<=(iNo/2);iCnt++)
+		for(iCnt=1;iCnt<iNo;iCnt++)
 		{
 			if((iNo%iCnt)==0)
 			{
-				
-				iSum=iSum+iCnt;
+				if((iCnt%2)==0)
+				{
+					System.out.print(iCnt+"\t");
+				}
 			}
 		}
 		
-		if(iSum==iNo)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	}
 }
 
-class program136
+class program134
 {
 	public static void main(String arg[])
 	{
 		Number nobj=new Number();
-		boolean bRet=false;
-		
 		nobj.Accept();
 		nobj.Display();
-		bRet=nobj.SumFactor();
+		nobj.EvenFactor();
 		
-		if(bRet==true)
-		{
-			System.out.println("Given number is perfect number.");
-		}
-		else
-		{
-			System.out.println("Given number is not perfect number.");
-		}
 	}
 }

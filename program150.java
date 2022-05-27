@@ -2,15 +2,14 @@
 OUTPUT:
 
 Enter number :
-98345
-Value is : 98345
-Total digits are:5
-
+234
+Value is : 234
+Reverse number is:432
 
 Enter number :
-37
-Value is : 37
-Total digits are:2
+-1214
+Value is : -1214
+Reverse number is:4121
 
 */
 import java.lang.*;
@@ -32,10 +31,10 @@ class Number
         System.out.println("Value is : "+this.iNo);
     }
 
-    public int CountDigit()
+    public int Reverse()
 	{
-		
-		int iCnt=0;
+		int iDigit=0;
+		int iRev=0;
 		if(iNo<0)
 		{
 			iNo=-iNo;
@@ -43,15 +42,15 @@ class Number
 		
 		while(iNo!=0)
 		{
-			
-			iCnt++;
+			iDigit=iNo%10;
+			iRev=iRev*10+iDigit;
 			iNo=iNo/10;
 		}
-		return iCnt;
+		return iRev;
 	}
 }
 
-class program145
+class program150
 {
     public static void main(String b[])
     {
@@ -62,7 +61,7 @@ class program145
             nobj.Accept();
             nobj.Display();
 
-            iRet=nobj.CountDigit();
-			System.out.println("Total digits are:"+iRet);
+            iRet=nobj.Reverse();
+			System.out.println("Reverse number is:"+iRet);
     }
 }

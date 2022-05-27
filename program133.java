@@ -2,16 +2,15 @@
 OUTPUT:
 
 Enter the number:
-20
-Entered number is:20
-1       2       4       5       10
-Total factors are:5
+222435
+Entered number is:222435
+4       2       2       2
+
 
 Enter the number:
--10
-Entered number is:-10
-1       2       5
-Total factors are:3
+-12456
+Entered number is:-12456
+6       4       2
 
 */
 
@@ -35,40 +34,35 @@ class Number
 		System.out.println("Entered number is:"+this.iNo);
 	}
 	
-	public int CountFactor()
+	public void EvenDigit()
 	{
-		int iCnt=0;
-		int iCount=0;
+		int iDigit=0;
+		
 		if(iNo<0)
 		{
 			iNo=-iNo;
 		}
 		
-		for(iCnt=1;iCnt<=iNo/2;iCnt++)
+		while(iNo!=0)
 		{
-			if((iNo%iCnt)==0)
+			iDigit=iNo%10;
+			if(iDigit%2==0)
 			{
-				System.out.print(iCnt+"\t");
-				iCount++;
+				System.out.print(iDigit+"\t");
 			}
+			iNo=iNo/10;
 		}
-		
-		return iCount;
 	}
 }
 
-class program142
+class program133
 {
 	public static void main(String arg[])
 	{
 		Number nobj=new Number();
-		int iRet=0;
-		
 		nobj.Accept();
 		nobj.Display();
-		iRet=nobj.CountFactor();
-		System.out.println();
-		System.out.println("Total factors are:"+iRet);
+		nobj.EvenDigit();
 		
 	}
 }

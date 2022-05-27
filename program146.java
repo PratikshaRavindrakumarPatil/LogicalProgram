@@ -2,16 +2,14 @@
 OUTPUT:
 
 Enter number :
-98345
-Value is : 98345
-Total digits are:5
-
+2134
+Value is : 2134
+Addition of digits are:10
 
 Enter number :
-37
-Value is : 37
-Total digits are:2
-
+-45
+Value is : -45
+Addition of digits are:9
 */
 import java.lang.*;
 import java.util.*;
@@ -32,9 +30,10 @@ class Number
         System.out.println("Value is : "+this.iNo);
     }
 
-    public int CountDigit()
+    public int SumDigit()
 	{
-		
+		int iDigit=0;
+		int iSum=0;
 		int iCnt=0;
 		if(iNo<0)
 		{
@@ -43,15 +42,15 @@ class Number
 		
 		while(iNo!=0)
 		{
-			
-			iCnt++;
+			iDigit=iNo%10;
+			iSum=iSum+iDigit;
 			iNo=iNo/10;
 		}
-		return iCnt;
+		return iSum;
 	}
 }
 
-class program145
+class program146
 {
     public static void main(String b[])
     {
@@ -62,7 +61,7 @@ class program145
             nobj.Accept();
             nobj.Display();
 
-            iRet=nobj.CountDigit();
-			System.out.println("Total digits are:"+iRet);
+            iRet=nobj.SumDigit();
+			System.out.println("Addition of digits are:"+iRet);
     }
 }
