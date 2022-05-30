@@ -1,19 +1,27 @@
-//Program to display 5 to 1 on screen
+//Accept one number from user number is less than 10 print "Hello" otherwise print "Demo" 
 
 #include<stdio.h>
-void Display()
+
+void Display(int iNo)
 {
-	int i=0;
-	i=5;
-	for(i=5;i>=1;i--)
+	if(iNo<10)
 	{
-		printf("%d\n",i);
-		//i++;
+		printf("Hello\n");
 	}
+	else
+	{
+		printf("Demo\n");
+	}
+	
 }
 int main()
 {
-	Display();
+	int iValue=0;
+	
+	printf("Enter the number:\n");
+	scanf("%d",&iValue);
+	
+	Display(iValue);
 	
 	return 0;
 }

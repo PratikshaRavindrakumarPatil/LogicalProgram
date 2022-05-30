@@ -1,13 +1,22 @@
-//Write program to perform addition of two numbers
+//Accept one number from user and print that number of '*' on screen
+
 #include<stdio.h>
 
-
+void Display(int iNo)
+{
+	while(iNo>0)
+	{
+		printf("*");
+		iNo--;
+	}
+}
 int main()
 {
-	int i=10,j=20,k=0;
+	int iValue=0;
 	
-	k=i+j;
-	printf("Addition of two number=%d\n",k);
+	printf("Enter the number:\n");
+	scanf("%d",&iValue);
 	
+	Display(iValue);
 	return 0;
 }
