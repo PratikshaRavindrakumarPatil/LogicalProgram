@@ -1,21 +1,33 @@
-//Program to display 1 to 5 on screen
-//Output  1 2 3 4 
+//write program to accept number from user and display its summation of non factors
 
 #include<stdio.h>
-
-void Display()
+int SumNonFactor(int iNo)
 {
 	int iCnt=0;
+	int iNonFact=0;
 	
-	for(iCnt=1;iCnt<=5;iCnt++)
+	for(iCnt=1;iCnt<iNo;iCnt++)
 	{
-		printf("%d\n",iCnt);
+		if((iNo%iCnt)!=0)
+		{
+			iNonFact=iNonFact+iCnt;
+			
+		}
 	}
-	
+
+	return iNonFact;
 }
+
 int main()
 {
-	Display();
+	int iValue=0;
+	int iRet=0;
+	
+	printf("Enter the number:\n");
+	scanf("%d",&iValue);
+	
+	iRet=SumNonFactor(iValue);
+	printf("Summation of non factor of given number:%d",iRet);
 	
 	return 0;
 }

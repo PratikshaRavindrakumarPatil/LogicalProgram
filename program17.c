@@ -1,28 +1,32 @@
+//Write a program which accept number from user display its factor in decreasing order
+
 #include<stdio.h>
-void Display(int iNo)
+void FactRev(int iNo)
 {
 	int iCnt=0;
-	if(iNo<0)
+	int iCntx;
+	
+	//int i=0;
+	for(iCnt=(iNo/2);iCnt>=1;iCnt--)
 	{
-		iNo=-iNo;
+		if((iNo%iCnt)==0)
+		{
+			
+			printf("%d\t",iCnt);
+						
+		}
+		
 	}
 	
-	for(iCnt=0;iCnt<iNo;iCnt++)
-	{
-		printf("Hello\n");
-	}
-	
+		
 }
+
 int main()
 {
-	
 	int iValue=0;
 	
 	printf("Enter the number:\n");
 	scanf("%d",&iValue);
 	
-	
-	Display(iValue);
-	
-	return 0;
+	FactRev(iValue);
 }

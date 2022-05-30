@@ -1,19 +1,30 @@
-//Program to display 1 to 5 on screen
-//Output  1 2 3 4 
-
+//Accept number from program and display non factors 
 #include<stdio.h>
-
-void Display()
+void NonFact(int iNo)
 {
-	printf("1\n");
-	printf("2\n");
-	printf("3\n");
-	printf("4\n");
-	printf("5\n");
+	int iCnt=0;
+	if(iNo<0)
+	{
+		iNo=-iNo;
+	}
+	
+	for(iCnt=1;iCnt<iNo;iCnt++)
+	{
+		if((iNo%iCnt)!=0)
+		{
+			printf("%d\t",iCnt);
+		}
+	}
 }
+
 int main()
 {
-	Display();
+	int iValue=0;
+	
+	printf("Enter the number:\n");
+	scanf("%d",&iValue);
+	
+	NonFact(iValue);
 	
 	return 0;
 }
