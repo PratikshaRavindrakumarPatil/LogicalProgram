@@ -1,56 +1,43 @@
-#include<stdio.h>
-#include<stdbool.h>
+//Accept nN number from user and display all such 
+//which are multiples of 11
 
-int CountFactor(int iNo)
+#include<stdio.h>
+#include<stdlib.h>
+
+void Display(int Arr[],int iLength)
 {
 	int iCnt=0;
-	int iFactCnt=0;
-	
-	for(iCnt=2;iCnt<=iNo/2;iCnt++)
+	printf("\nNumber are multiples of 11 are:\n");
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		if(iNo%iCnt==0)
+		if((Arr[iCnt]%11)==0)
 		{
-			iFactCnt++;
+			printf("%d\n",Arr[iCnt]);
 		}
-		
 	}
-	return iFactCnt;
-}
-
-
-bool CheckPrime(int iNo)
-{
-		int iRet=0;
-		iRet=CountFactor(iNo);
-		if(iRet==0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 }
 
 int main()
 {
-	int iValue=0;
-	bool bRet=false;
+	int iSize=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
 	
-	printf("Enter the number:");
-	scanf("%d",&iValue);
 	
-	bRet=CheckPrime(iValue);
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
 	
-	if(bRet==true)
+	iPtr=(int*)malloc(sizeof(int)*iSize);
+	
+	printf("\nEnter the number:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
 	{
-		printf("%d is prime number\n",iValue);
+		printf("Enter %d number:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
 	}
-	else
-	{
-		printf("%d is not prime number\n",iValue);
-	}	
+	
+	Display(iPtr,iSize);
+	
+	free(iPtr);
 	return 0;
 }
-
-

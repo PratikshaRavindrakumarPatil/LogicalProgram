@@ -1,50 +1,44 @@
+//Accept number from user and display all such elements
+//which are even and divisible by 5
+
 #include<stdio.h>
-#include<stdbool.h>
+#include<stdlib.h>
 
-
-bool CheckPerfect(int iNo)
+void Display(int Arr[],int iLength)
 {
-	int iCnt=0;
-	int iSum=0;
-	if(iNo<0)
+	register int iCnt=0;
+	printf("\nNumber is even and divisible by 5 is:\n");
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iNo=-iNo;
-	}
-	for(iCnt=iNo/2;((iCnt>=(iNo/2))&&(iSum<=iNo));iCnt--)
-	{
-		if((iNo%iCnt)==0)
+		if(((Arr[iCnt]%2)==0) &&((Arr[iCnt]%5)==0))
 		{
-			iSum=iSum+iCnt;
-		}	
+			printf("%d\n",Arr[iCnt]);
+		}
 	}
+		
 	
-	if(iSum==iNo)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 }
-
 
 int main()
 {
-	int iValue=0;
-	bool bRet=false;
-	printf("Enter the number:");
-	scanf("%d",&iValue);
+	int iSize=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
 	
-	bRet=CheckPerfect(iValue);
+	printf("Enter the number of elements:\n");
+	scanf("%d",&iSize);
 	
-	if(bRet==true)
+	iPtr=(int *)malloc(iSize*sizeof(int));
+	
+	printf("\nEnter the number:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
 	{
-		printf("%d is perfect number\n",iValue);
+		printf("Enter %d element:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
 	}
-	else
-	{
-		printf("%d is not perfect number.\n",iValue);
-	}
+	
+	Display(iPtr,iSize);
+	free(iPtr);
+	
 	return 0;
 }

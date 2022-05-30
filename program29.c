@@ -1,8 +1,11 @@
-//Accept number from user and display its factor
-#include<stdio.h>
+//Write a program which accept number from user and
+//count frequency of 4 in it.
 
-void DisplayFactor(int iNo)
+
+#include<stdio.h>
+int CountFour(int iNo)
 {
+	int iDigit=0;
 	int iCnt=0;
 	
 	if(iNo<0)
@@ -10,26 +13,29 @@ void DisplayFactor(int iNo)
 		iNo=-iNo;
 	}
 	
-	for(iCnt=1;iCnt<=(iNo/2);iCnt++)
+	while(iNo>0)
 	{
-		if((iNo%iCnt)==0)
+		iDigit=iNo%10;
+		if(iDigit==4)
 		{
-			printf("%d\n",iCnt);
+			iCnt++;
 		}
+		iNo=iNo/10;
 	}
+	
+	return iCnt;
 }
-
 
 int main()
 {
 	int iValue=0;
-	
+	int iRet=0;
 	printf("Enter the number:\n");
 	scanf("%d",&iValue);
 	
-	DisplayFactor(iValue);
+	iRet=CountFour(iValue);
+	printf("%d is contains %d time 4 in it.\n",iValue,iRet);
+	
+	
 	return 0;
 }
-
-
-//Time complexity:O(N/2)

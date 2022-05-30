@@ -1,50 +1,40 @@
+//write a program which accept number from user and return diffrernce between
+//summation of even digits and summation of odd digits.
+
 #include<stdio.h>
-#include<stdbool.h>
-
-
-bool CheckPerfect(int iNo)
+int CountDifference(int iNo)
 {
-	int iCnt=0;
-	int iSum=0;
-	if(iNo<0)
+	int iDigit=0;
+	int iSumE=0;
+	int iSumO=0;
+	int iDiff=0;
+	
+	while(iNo>0)
 	{
-		iNo=-iNo;
-	}
-	for(iCnt=1;iCnt<=(iNo/2);iCnt++)
-	{
-		if((iNo%iCnt)==0)
+		iDigit=iNo%10;
+		if((iDigit%2)==0)
 		{
-			iSum=iSum+iCnt;
+			iSumE=iSumE+iDigit;
 		}
+		else
+		{
+			iSumO=iSumO+iDigit;
+		}
+		iNo=iNo/10;
 	}
 	
-	if(iSum==iNo)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	iDiff=iSumE-iSumO;
+	
+	return iDiff;
 }
-
-
 int main()
 {
 	int iValue=0;
-	bool bRet=false;
-	printf("Enter the number:");
+	int iRet=0;
+	printf("Enter the number:\n");
 	scanf("%d",&iValue);
 	
-	bRet=CheckPerfect(iValue);
-	
-	if(bRet==true)
-	{
-		printf("%d is perfect number\n",iValue);
-	}
-	else
-	{
-		printf("%d is not perfect number.\n",iValue);
-	}
+	iRet=CountDifference(iValue);
+	printf("Difference is:%d\n",iRet);
 	return 0;
 }

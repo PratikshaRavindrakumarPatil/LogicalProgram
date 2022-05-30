@@ -1,45 +1,32 @@
-#include<stdio.h>
-void DisplayClass(float fMarks)
-{
-	if((fMarks>=0.0) && (fMarks<35.00))
-	{
-		printf("You are fail.\n");
-	}
-	
-	else if(fMarks>=35.0 && fMarks<50.0)
-	{
-		printf("You are in pass class\n");
-	}
-	
-	else if((fMarks>=50.0)&&(fMarks<70.0))
-	{
-		printf("You are in second class\n");
-	}
-	else if((fMarks>=60.0)&&(fMarks<70.0))
-	{
-		printf("You are in first class \n");
-	}
-	
-	else if((fMarks>=70.0)&&(fMarks<=100.0))
-	{
-		printf("You are in first class with distinction\n");
-	}
-	else
-	{
-		printf("Invalid persentage");
-	}
-}
+//Write program which accept number from 
+//user and display its digits in reverse order.
 
+#include<stdio.h>
+void DisplayDigits(int iNo)
+{
+	int iDigit=0;
+	
+	if(iNo<0)
+	{
+		iNo=-iNo;
+	}
+	
+	while(iNo>0)
+	{
+		iDigit=iNo%10;
+		printf("Digits are:%d\n",iDigit);
+		iNo=iNo/10;
+		
+	}
+	
+}
 int main()
 {
-	float fValue=0.0;
+	int iValue=0;
+	printf("Enter the number:\n");
+	scanf("%d",&iValue);
 	
-	
-	printf("Enter the persentage:\n");
-	scanf("%f",&fValue);
-	
-	DisplayClass(fValue);
-	
+	DisplayDigits(iValue);
 	
 	return 0;
 }

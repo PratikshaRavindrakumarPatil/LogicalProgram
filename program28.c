@@ -1,8 +1,8 @@
 //Write a program which accept number from user and
-//count frequency of such digits which are less than 6.
+//count frequency of 2 in it.
 
 #include<stdio.h>
-int Count(int iNo)
+int CountTwo(int iNo)
 {
 	int iDigit=0;
 	int iCnt=0;
@@ -15,26 +15,27 @@ int Count(int iNo)
 	while(iNo>0)
 	{
 		iDigit=iNo%10;
-		if(iDigit<6)
+		if(iDigit==2)
 		{
 			iCnt++;
 		}
 		iNo=iNo/10;
+		
 	}
 	
 	return iCnt;
 }
 
+
 int main()
 {
 	int iValue=0;
 	int iRet=0;
+	
 	printf("Enter the number:\n");
 	scanf("%d",&iValue);
 	
-	iRet=Count(iValue);
-	printf("%d is contains %d time less 6 digits in it.\n",iValue,iRet);
-	
-	
+	iRet=CountTwo(iValue);
+	printf("%d contains %d time 2 in it.\n",iValue,iRet);
 	return 0;
 }

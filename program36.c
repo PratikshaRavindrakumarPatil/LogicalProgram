@@ -1,55 +1,61 @@
+//Accept N number from user and return difference between
+//summation of even elemnts and summation of odd elements.
+
+
 #include<stdio.h>
-#include<stdbool.h>
+#include<stdlib.h>
 
-
-bool CheckPerfect(int iNo)
+int Difference(int Arr[],int iLength)
 {
-	int iCnt=0;
-	int iSum=0;
-	if(iNo<0)
+	register int iCnt=0;
+	int iSumEven=0,iSumOdd=0;
+	
+	
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iNo=-iNo;
-	}
-	for(iCnt=1;iCnt<=(iNo/2);iCnt++)
-	{
-		if((iNo%iCnt)==0)
+		if((Arr[iCnt]%2)==0)
 		{
-			iSum=iSum+iCnt;
+			iSumEven=iSumEven+Arr[iCnt];
 		}
-		
-		if(iSum>iNo)
+		else
 		{
-			break;
+			iSumOdd=iSumOdd+Arr[iCnt];
 		}
 	}
 	
-	if(iSum==iNo)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	
+	return(iSumEven-iSumOdd) ;
 }
-
 
 int main()
 {
-	int iValue=0;
-	bool bRet=false;
-	printf("Enter the number:");
-	scanf("%d",&iValue);
+	int iSize=0,iCnt=0;
+	int *iPtr=NULL;
+	int iRet=0;
 	
-	bRet=CheckPerfect(iValue);
 	
-	if(bRet==true)
+	printf("Enter the number of elements:\n");
+	scanf("%d",&iSize);
+	
+	iPtr=(int*)malloc(iSize*sizeof(int));
+	if(iPtr==NULL)
 	{
-		printf("%d is perfect number\n",iValue);
+		printf("Unable to allocate memory.\n");
+		return -1;
 	}
-	else
+	
+	printf("Enter the %d element\n\n",iSize);
+	for(iCnt=0;iCnt<iSize;iCnt++)
 	{
-		printf("%d is not perfect number.\n",iValue);
+		printf("Enter %d element:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
 	}
+	
+	
+	iRet=Difference(iPtr,iSize);
+	printf("\n");
+	printf("Difference is:%d\n",iRet);
+	free(iPtr);
+	
 	return 0;
-}
+}	

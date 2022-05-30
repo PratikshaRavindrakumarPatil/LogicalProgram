@@ -1,39 +1,56 @@
+//Write program which accept number from 
+//user and check whether it contains 0 in it not 
+
+
 #include<stdio.h>
-void JwelarsPortal(int iWeight)
+#include<stdbool.h>
+
+bool CheckZero(int iNo)
 {
-	switch(iWeight)
+	int iDigit=0;
+	int iCnt=0;
+	if(iNo<0)
 	{
-		case 1:printf("Total price is:4000\n");
-			   break;
-		
-		case 2:printf("Total price is:8000\n");
-			   break;
-		
-		case 5:printf("Total price is:20000\n");
-			   break;
-		
-		case 10:printf("Total price is:40000\n");
-			   break;
-	
-		default:printf("Invalid weight\n");
+		iNo=-iNo;
 	}
+	
+	while(iNo>0)
+	{
+		iDigit=iNo%10;
+		if(iDigit==0)
+		{
+			 iCnt++;
+		}
+		iNo=iNo/10;	
+	}
+	if(iCnt>0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
 	
 }
 int main()
 {
 	int iValue=0;
+	bool bRet=false;
 	
-	printf("1gm=4000\n");
-	printf("2gm=8000\n");
-	printf("5gm=20000\n");
-	printf("10gm=40000\n");
-	
-	printf("Enter the Gold coin size that you want to purchase:\n");
+	printf("Enter the number:\n");
 	scanf("%d",&iValue);
 	
-	
-	
-	JwelarsPortal(iValue);
+	bRet=CheckZero(iValue);
+	if(bRet==true)
+	{
+		printf("%d contains zero.\n",iValue);
+	}
+	else
+	{
+		printf("%d is not contains zero.\n",iValue);
+	}
 	
 	return 0;
 }

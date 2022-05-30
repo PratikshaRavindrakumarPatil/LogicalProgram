@@ -1,8 +1,11 @@
-//Accept number from user and display its factor
+//Write program which accept from user and return the count of even digits.
+
 #include<stdio.h>
 
-void DisplayNonFactor(int iNo)
+int CountEven(int iNo)
 {
+	
+	int iDigit=0;
 	int iCnt=0;
 	
 	if(iNo<0)
@@ -10,31 +13,28 @@ void DisplayNonFactor(int iNo)
 		iNo=-iNo;
 	}
 	
-	for(iCnt=1;iCnt<iNo;iCnt++)
+	
+	while(iNo>0)
 	{
-		if((iNo%iCnt)==0)
+		iDigit=iNo%10;
+		if((iDigit%2)==0)
 		{
-			printf("%d\n",iCnt);
+			iCnt++;
 		}
-		
+		iNo=iNo/10;
 		
 	}
+	return iCnt;
 }
-
-
 int main()
 {
 	int iValue=0;
+	int iRet=0;
 	
 	printf("Enter the number:\n");
 	scanf("%d",&iValue);
 	
-	DisplayNonFactor(iValue);
+	iRet=CountEven(iValue);
+	printf("%d conatins %d even digits.\n",iValue,iRet);
 	return 0;
 }
-
-
-
-//Time complexity:O(N)
-//O:Order
-//N:Natural number
