@@ -1,19 +1,54 @@
-//Write program to perform addition of two numbers
-#include<stdio.h>
+//Accept one number check whether it is divisible for 5 or not
 
+#include<stdio.h>
+typedef int BOOL;
+#define TRUE 1
+#define FALSE 0
+
+BOOL Check(int iNo)
+{
+	if((iNo%5)==0)
+	{
+		return TRUE;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
 
 int main()
 {
-	int iNo1=0,iNo2=0,iSum=0;
+	int iValue=0;
+	BOOL bRet=FALSE;
 	
-	printf("Enter the first number:\n");
-	scanf("%d",&iNo1);
+	printf("Enter the number:\n");
+	scanf("%d",&iValue);
 	
-	printf("Enter the second number:\n");
-	scanf("%d",&iNo2);
+	bRet=Check(iValue);
 	
-	iSum=iNo1+iNo2;
-	printf("Addition of two number=%d\n",iSum);
+	if(bRet==TRUE)
+	{
+		printf("Divisible by 5\n");
+	}
+	else
+	{
+		printf("Not divisible by 5\n");
+	}
 	
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
