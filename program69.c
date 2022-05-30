@@ -1,28 +1,46 @@
+/*
+input: iRow=3    iCol=5
+
+
+output:	4       4       4       4
+		3       3       3       3
+		2       2       2       2
+		1       1       1       1
+
+		
+*/
+
+
 #include<stdio.h>
 
-void Display(int Arr[])
+void Display(int iRow,int iCol)
 {
-	register int iCnt=0;
-	printf("Elements of array:\n");
+	int i=0,j=0;
 	
-	for(iCnt=0;iCnt<5;iCnt++)
+	
+	for(i=iRow;i>=1;i--)
 	{
-		printf("%d\n",Arr[iCnt]);
+		for(j=1;j<=iCol;j++)
+		{
+			printf("%d\t",i);
+	
+		}
+		
+		printf("\n");
 		
 	}
 }
-
 int main()
 {
-	int Brr[5];
-	register int iCnt=0;
-	printf("Enter elements:\n");
-	for(iCnt=0;iCnt<5;iCnt++)
-	{
-		scanf("%d",&Brr[iCnt]);
-	}
+	int iValue1=0,iValue2=0;
 	
-	Display(Brr);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
+	
+	printf("Enter the cloumn:");
+	scanf("%d",&iValue2);
+	
+	Display(iValue1,iValue2);
 	
 	return 0;
 }

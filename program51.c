@@ -1,39 +1,48 @@
-//Accept number and display count of digit
+//Accept N number from user and return largest number
+
 
 #include<stdio.h>
+#include<stdlib.h>
 
-int CountDigits(int iNo)
+int Maximum(int Arr[],int iLength)
 {
-	
-	int iCount=0;
-	if(iNo<0)
+	register int iCnt=0;
+	int iMax=Arr[0];
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iNo=-iNo;
+		if(iMax<Arr[iCnt])
+		{
+			iMax=Arr[iCnt];
+		}
 	}
-	
-	while(iNo>0)
-	{
-		
-		iCount++;
-		
-		iNo=iNo/10;
-		
-		
-	}
-	
-	return iCount;
+	return iMax;
 	
 }
+
+
 int main()
 {
 	
-	int iValue=0;
-	int iRet=0;
+	int iSize=0,iRet=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
 	
-	printf("Enter the number:\n");
-	scanf("%d",&iValue);
 	
-	iRet=CountDigits(iValue);
-	printf("Count of digits is:%d\n",iRet);
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
+	
+	iPtr=(int*)malloc(sizeof(int)*iSize);
+	printf("Enter the elements:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
+	{
+		printf("Enter the %d element:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
+	}
+	
+	iRet=Maximum(iPtr,iSize);
+	
+	printf("Maximum number is:%d\n",iRet);
+
+	free(iPtr);
 	return 0;
 }

@@ -1,36 +1,52 @@
-#include<stdio.h>
-#include<stdlib.h>
+/*
+input: iRow=4   iCol=4
 
-void DisplayEven(int Arr[],int iLength)
+
+output:	1       2       3       4
+		5       6       7       8
+		9       1       2       3
+		4       5       6       7
+
+		
+*/
+
+
+#include<stdio.h>
+
+void Display(int iRow,int iCol)
 {
-	int iCnt=0;
-	for(iCnt=0;iCnt<iLength;iCnt++)
+	int i=0,j=0,iCnt=0;
+	
+	
+	for(i=1;i<=iRow;i++)
 	{
-		if((Arr[iCnt]%2)==0)
+		for(j=1;j<=iCol;j++)
 		{
-			printf("%d\n",Arr[iCnt]);
+			iCnt++;
+			printf("%d\t",iCnt);
+			
+			if(iCnt==9)
+			{
+				iCnt=0;
+			}
 		}
+		
+		
+		printf("\n");
+		
 	}
 }
-
 int main()
 {
-	int iSize=0;
-	int *ptr=NULL;
-	register int iCnt=0;
+	int iValue1=0,iValue2=0;
 	
-	printf("Enter the number of element:\n");
-	scanf("%d",&iSize);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
 	
-	ptr=(int*)malloc(iSize *sizeof(int));
+	printf("Enter the cloumn:");
+	scanf("%d",&iValue2);
 	
-	printf("Enter the element:\n");
-	for(iCnt=0;iCnt<iSize;iCnt++)
-	{
-		scanf("%d",&ptr[iCnt]);
-	}
-	printf("Even element are:\n");
-	DisplayEven(ptr,iSize);
-	free(ptr);
+	Display(iValue1,iValue2);
+	
 	return 0;
 }

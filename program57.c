@@ -1,33 +1,26 @@
-//Accept the two number and display power of
-// 
+//Input: 5
+//Output:5	#	4	#	3	#	2	#	1	#
 
 #include<stdio.h>
-unsigned long int Power(int iNo1,int iNo2)
+
+
+void Display(int iNo)
 {
-	unsigned long int lMult=1;
-	register int iCnt=0;
-	
-	for(iCnt=1;iCnt<=iNo2;iCnt++)
+	int iCnt=0;
+	for(iCnt=iNo;iCnt>=1;iCnt--)
 	{
-		lMult=lMult*iNo1;
+		printf("%d\t#\t",iCnt);
 	}
 	
-	return lMult;
 }
-
 int main()
 {
-	auto int iValue1=0,iValue2=0;
-	auto unsigned long int lRet=0;
+	int iValue=0;
 	
-	printf("Enter the Base:");
-	scanf("%d",&iValue1);
+	printf("Enter the number:");
+	scanf("%d",&iValue);
 	
-	printf("Enter the Power:");
-	scanf("%d",&iValue2);
 	
-	lRet=Power(iValue1,iValue2);
-	printf("power is:%ld\n",lRet);
-	
+	Display(iValue);
 	return 0;
 }

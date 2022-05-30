@@ -1,56 +1,33 @@
-#include<stdio.h>
-#include<stdbool.h>
+//input:5
+//output: A B C D E
 
-bool CheckPalindrome(int iNo)
+
+#include<stdio.h>
+
+void Display(int iNo)
 {
-	
-	int iDigit=0;
-	int iRev=0;
-	int iTemp=0;
-	
-	
-	if(iNo<0)
+	char c='\0';
+	int iCnt=0;
+	for(c='A';c<='Z';c++)
 	{
-		iNo=-iNo;
-	}
-	iTemp=iNo;
-	
-	while(iNo>0)
-	{
-		iDigit=iNo%10;
-		iRev=iRev*10+iDigit;			
-		
-		iNo=iNo/10;
+		printf("%c\t",c);
+		iCnt++;
+		if(iCnt==iNo)
+		{
+			break;
+		}
 	}
 	
-	if(iRev==iTemp)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	
 }
 int main()
 {
-	
 	int iValue=0;
-	bool bRet;
 	
-	printf("Enter the number:\n");
+	printf("Enter the number:");
 	scanf("%d",&iValue);
 	
-	bRet=CheckPalindrome(iValue);
 	
-	if(bRet==true)
-	{
-		printf("%d is palindrome number\n",iValue);
-	}
-	else
-	{
-		printf("%d is not palindrome number \n",iValue);
-	}
-	
+	Display(iValue);
 	return 0;
 }

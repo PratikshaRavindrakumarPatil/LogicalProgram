@@ -1,40 +1,57 @@
+
+/*
+input: iRow=4   iCol=4
+
+
+output:
+		a       b       c       d       e
+		1       2       3       4       5
+		a       b       c       d       e
+		1       2       3       4       5
+		a       b       c       d       e
+		
+*/
+
+
 #include<stdio.h>
-#include<stdlib.h>
 
-int DisplaySum(int Arr[],int iLength)
+void Display(int iRow,int iCol)
 {
-	register int iCnt=0;
-	int iSum=0;
-	
-	for(iCnt=0;iCnt<iLength;iCnt++)
-	{
-		iSum=iSum+Arr[iCnt];
-	}
-	
-	return iSum;
-}
+	int i=0,j=0;
+	char ch='\0';
 
+	
+	for(i=1;i<=iRow;i++)
+	{
+		for(j=1,ch='a';j<=iCol;j++,ch++)
+		{
+			
+			if((i%2)==0)
+			{
+				printf("%d\t",j);				
+			}
+			else 
+			{
+				printf("%c\t",ch);
+			}
+		}
+		
+		
+		printf("\n");
+		
+	}
+}
 int main()
 {
-	int iSize=0,iRet=0;
-	int *iPtr=NULL;
-	register int iCnt=0;
+	int iValue1=0,iValue2=0;
 	
-	printf("Enter the number of element:\n");
-	scanf("%d",&iSize);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
 	
-	iPtr=(int *)malloc(iSize*sizeof(int));
+	printf("Enter the cloumn:");
+	scanf("%d",&iValue2);
 	
-	printf("\nEnter the number:\n");
-	for(iCnt=0;iCnt<iSize;iCnt++)
-	{
-		scanf("%d",&iPtr[iCnt]);
-	}
+	Display(iValue1,iValue2);
 	
-	iRet=DisplaySum(iPtr,iSize);
-	printf("Addition is:%d",iRet);
-	
-	free(iPtr);
-
 	return 0;
 }

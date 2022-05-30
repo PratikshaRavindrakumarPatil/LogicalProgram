@@ -1,40 +1,59 @@
-#include<stdio.h>
+//Accept N number from user and display 
+//difference between largest and smallest number
 
-int DisplayEven(int iNo)
+#include<stdio.h>
+#include<stdlib.h>
+
+int Difference(int Arr[],int iLength)
 {
-	int iDigit=0;
-	//int iSum=0;
-	if(iNo<0)
-	{
-		iNo=-iNo;
-	}
+	int iCnt=0;
+	int iMax=Arr[0];
+	int iMin=Arr[0];
 	
-	while(iNo>0)
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iDigit=iNo%10;
-		if((iDigit%2)==0)
+		if(iMax<Arr[iCnt])
 		{
-			printf("Even digits are:%d\n",iDigit);
+			iMax=Arr[iCnt];
 		}
-		
-		iNo=iNo/10;
-		
-		
 	}
 	
+	for(iCnt=0;iCnt<iLength;iCnt++)
+	{
+		if(iMin>Arr[iCnt])
+		{
+			iMin=Arr[iCnt];
+		}
+	}
+	
+	return(iMax-iMin);
 	
 }
+
+
 int main()
 {
 	
-	int iValue=0;
-	int iRet=0;
-	
-	printf("Enter the number:\n");
-	scanf("%d",&iValue);
-	
-	DisplayEven(iValue);
+	int iSize=0,iRet=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
 	
 	
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
+	
+	iPtr=(int*)malloc(sizeof(int)*iSize);
+	printf("Enter the elements:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
+	{
+		printf("Enter the %d element:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
+	}
+	
+	iRet=Difference(iPtr,iSize);
+	printf("Differnce between maximum and minimum number is:%d\n",iRet);
+	
+
+	free(iPtr);
 	return 0;
 }

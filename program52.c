@@ -1,37 +1,48 @@
-#include<stdio.h>
+//Accept N number from user and return largest number
 
-int SumDigits(int iNo)
+
+#include<stdio.h>
+#include<stdlib.h>
+
+int Minimum(int Arr[],int iLength)
 {
-	int iDigit=0;
-	int iSum=0;
-	if(iNo<0)
+	int iCnt=0;
+	int iMin=Arr[0];
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iNo=-iNo;
+		if(iMin>Arr[iCnt])
+		{
+			iMin=Arr[iCnt];
+		}
 	}
-	
-	while(iNo>0)
-	{
-		iDigit=iNo%10;
-		iSum=iSum+iDigit;
-		
-		iNo=iNo/10;
-		
-		
-	}
-	return iSum;
+	return iMin;
 	
 }
+
+
 int main()
 {
 	
-	int iValue=0;
-	int iRet=0;
+	int iSize=0,iRet=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
 	
-	printf("Enter the number:\n");
-	scanf("%d",&iValue);
 	
-	iRet=SumDigits(iValue);
-	printf("The summation of digits is:%d",iRet);
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
 	
+	iPtr=(int*)malloc(sizeof(int)*iSize);
+	printf("Enter the elements:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
+	{
+		printf("Enter the %d element:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
+	}
+	
+	iRet=Minimum(iPtr,iSize);
+	
+	printf("Minimum number is:%d\n",iRet);
+
+	free(iPtr);
 	return 0;
 }

@@ -1,53 +1,53 @@
+//Accept N number from user and return 
+//frequency of 11 from it
+
+
 #include<stdio.h>
-#include<stdbool.h>
+#include<stdlib.h>
 
 
-
-
-bool CheckPrime(int iNo)
+int Count(int Arr[],int iLength)
 {
-		
-		int iCnt=0;
-		bool bFlag=true;
-	
-	if(iNo<0)
+	int iCnt=0,iNo=11;
+	int iFrequency=0;
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iNo=-iNo;
-	}
-	
-	for(iCnt=2;iCnt<=iNo/2;iCnt++)
-	{
-		if(iNo%iCnt==0)
+		if(Arr[iCnt]==iNo)
 		{
-			bFlag=false;
-			break;
+			iFrequency++;
 		}
-		
 	}
-	
-		
-	return bFlag;
+
+	return iFrequency;
 }
 
 int main()
 {
-	int iValue=0;
-	bool bRet=false;
+	int iSize=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
+	int iRet=0;
+
 	
-	printf("Enter the number:");
-	scanf("%d",&iValue);
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
 	
-	bRet=CheckPrime(iValue);
+	iPtr=(int*)malloc(sizeof(int)*iSize);
 	
-	if(bRet==true)
+	printf("\nEnter the number:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
 	{
-		printf("%d is prime number\n",iValue);
+		
+		printf("Enter %d number:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
 	}
-	else
-	{
-		printf("%d is not prime number\n",iValue);
-	}	
+	
+
+	
+	
+	iRet=Count(iPtr,iSize);
+	printf("Frequency of 11 is:%d\n",iRet);
+
+	free(iPtr);
 	return 0;
 }
-
-

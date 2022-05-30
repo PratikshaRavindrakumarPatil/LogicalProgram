@@ -1,40 +1,64 @@
-#include<stdio.h>
+//Accept N number from user and display all such numbers which 
+//contains 3 digits in it.
 
-int SumEven(int iNo)
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+
+void DisplayNumber(int Arr[],int iLength)
 {
-	int iDigit=0;
-	int iSum=0;
-	if(iNo<0)
-	{
-		iNo=-iNo;
-	}
+    register int iCnt=0;
+	int iDigitCnt=0,Brr[iLength];
 	
-	while(iNo>0)
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iDigit=iNo%10;
-		if((iDigit%2)==0)
+		Brr[iCnt]=Arr[iCnt];
+		iDigitCnt=0;
+		
+		while(Arr[iCnt]!=0)
+		{	
+			iDigitCnt++;
+			Arr[iCnt]=Arr[iCnt]/10;
+		}
+			
+		
+		if(iDigitCnt==3)
 		{
-			iSum=iSum+iDigit;
+			printf("%d\t",Brr[iCnt]);
+					
 		}
 		
-		iNo=iNo/10;
+		
 		
 		
 	}
-	return iSum;
-	
 }
+
+
 int main()
 {
 	
-	int iValue=0;
-	int iRet=0;
+	int iSize=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
 	
-	printf("Enter the number:\n");
-	scanf("%d",&iValue);
 	
-	iRet=SumEven(iValue);
-	printf("The sum of even digit is:%d\n",iRet);
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
 	
+	iPtr=(int*)malloc(sizeof(int)*iSize);
+	printf("Enter the elements:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
+	{
+		printf("Enter the %d element:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
+	}
+	
+	DisplayNumber(iPtr,iSize);
+	
+
+	free(iPtr);
 	return 0;
 }

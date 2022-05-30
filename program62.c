@@ -1,73 +1,40 @@
+/*
+input: iRow=4    iCol=3
+
+
+output:	1	2	3
+		1	2	3
+		1	2	3
+		1	2	3
+*/
+
+
 #include<stdio.h>
-#include<stdbool.h>
 
-
-bool CheckAmstrong(int iNo)
+void Display(int iRow,int iCol)
 {
-	int iTemp=0;
-	int iDigCnt=0;
-	int iDigit=0,iSum=0;
-	int iCnt=0,iMult=1;
+	int i=0,j=0;
 	
-	
-	if(iNo<0)
+	for(i=1;i<=iRow;i++)
 	{
-		iNo=-iNo;
-	}
-	
-	iTemp=iNo;
-	
-	
-	//Calculate number of digits
-	while(iNo>0)
-	{
-		iDigCnt++;
-		iNo=iNo/10;	
-	}
-	iNo=iTemp;
-	while(iNo!=0)
-	{
-		iMult=1;
-		iDigit=iNo%10;
-		
-		for(iCnt=1;iCnt<=iDigCnt;iCnt++)
+		for(j=1;j<=iCol;j++)
 		{
-			
-			iMult=iMult*iDigit;
+			printf("%d\t",j);
 		}
-		
-		iSum=iSum+iMult;
-		iNo=iNo/10;
+		printf("\n");
 	}
-	
-	if(iSum==iTemp)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-	
-	
 }
-
 int main()
 {
-	int iValue=0;
-	bool bRet=false;
+	int iValue1=0,iValue2=0;
 	
-	printf("Enter number:\n");
-	scanf("%d",&iValue);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
 	
-	bRet=CheckAmstrong(iValue);
-	if(bRet==true)
-	{
-		printf("%d is amstrong number.\n",iValue);
-	}
-	else
-	{
-			printf("%d is not amstrong number.\n",iValue);
-	}
+	printf("Enter the columns:");
+	scanf("%d",&iValue2);
+	
+	Display(iValue1,iValue2);
+	
 	return 0;
 }

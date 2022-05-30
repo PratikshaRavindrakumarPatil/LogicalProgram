@@ -1,57 +1,27 @@
-#include<stdio.h>
-#include<stdbool.h>
+//input:8
+//output:2 4 6 8 10 12 14 16
 
-bool CheckAmstrong(int iNo)
+#include<stdio.h>
+
+void Display(int iNo)
 {
-	int iTemp=0;
-	iTemp=iNo;
-	int iDigit=0;
 	int iCnt=0;
-	int iCount=0;
-	int iMult=1;
-	int iSum=0;
 	
-	while(iNo>0)
+	for(iCnt=2;iCnt<=(2*iNo);iCnt=iCnt+2)
 	{
 		
-		iDigit=iNo%10;
-		iCount++;
-		iMult=1;
-		for(iCnt=1;iCnt<=iCount;iCnt++)
-		{
-			
-			iMult=iMult*iDigit;
-			
-		}
+			printf("%d\t",iCnt);
 		
-		iSum=iSum+iMult;
-		iNo=iNo/10;
 	}
 	
-	if(iTemp==iSum)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 }
 int main()
 {
 	int iValue=0;
-	bool bRet=false;
-	printf("Enter number:\n");
+	printf("Enter the number:");
 	scanf("%d",&iValue);
 	
-	bRet=CheckAmstrong(iValue);
-	if(bRet==true)
-	{
-		printf("is amstrong number.\n");
-	}
-	else
-	{
-		printf("is not amstrong number.\n");
-	}
+	Display(iValue);
+	
 	return 0;
 }

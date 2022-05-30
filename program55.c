@@ -1,31 +1,49 @@
+//Accept N number from user and display summation
+//of digits of each number
+
 #include<stdio.h>
 
-int Reverse(int iNo)
+#include<stdlib.h>
+
+void DigitSum(int Arr[],int iLength)
 {
-	int iDigit=0;
-	int iRev=0;
+	register int iCnt=0;
+	int iDigit=0,iSum=0;
 	
-	while(iNo>0)
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iDigit=iNo%10;
-		iRev=iRev*10+iDigit;			
-		
-		iNo=iNo/10;
+		iSum=0;
+		while(Arr[iCnt]!=0)
+		{
+			iDigit=Arr[iCnt]%10;
+			iSum=iSum+iDigit;
+			Arr[iCnt]=Arr[iCnt]/10;
+		}
+		printf("%d\t",iSum);
 	}
-	
-	return iRev;
+		
 }
+
 int main()
 {
+	int iSize=0;
+	register int iCnt=0;
+	int *iPtr=NULL;
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
 	
-	int iValue=0;
-	int iRet=0;
-	
+	iPtr=(int*)malloc(sizeof(int)*iSize);
+
 	printf("Enter the number:\n");
-	scanf("%d",&iValue);
+	for(iCnt=0;iCnt<iSize;iCnt++)
+	{
+		printf("Enter the %d number:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
+	}
 	
-	iRet=Reverse(iValue);
-	printf("Reverse number is:%d\n",iRet);
 	
+	DigitSum(iPtr,iSize);
+	
+	free(iPtr);
 	return 0;
 }

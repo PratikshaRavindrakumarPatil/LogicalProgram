@@ -1,61 +1,68 @@
+//Accept N number from user and check that numbers contains 11 in 
+//it or not
+
+
 #include<stdio.h>
+#include<stdlib.h>
 #include<stdbool.h>
 
-int CountFactor(int iNo)
+bool Check(int Arr[],int iLength)
 {
-	int iCnt=0;
-	int iFactCnt=0;
-	
-	if(iNo<0)
+	int iCnt=0,iNo=11;
+	bool bFlag=false;
+	for(iCnt=0;iCnt<iLength;iCnt++)
 	{
-		iNo=-iNo;
+		if(Arr[iCnt]==iNo)
+		{
+			bFlag=true;
+			break;
+		}
 	}
-	
-	for(iCnt=2;iCnt<=iNo/2;iCnt++)
+
+	if(iCnt==iLength)
 	{
-		if(iNo%iCnt==0)
-		{
-			iFactCnt++;
-		}
-		
+		return false;
 	}
-	return iFactCnt;
-}
-
-
-bool CheckPrime(int iNo)
-{
-		int iRet=0;
-		iRet=CountFactor(iNo);
-		if(iRet==0)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+	else
+	{
+		return true;
+	}
 }
 
 int main()
 {
-	int iValue=0;
-	bool bRet=false;
+	int iSize=0;
+	int *iPtr=NULL;
+	register int iCnt=0;
+	bool bRet=0;
+
 	
-	printf("Enter the number:");
-	scanf("%d",&iValue);
+	printf("Enter the number of element:\n");
+	scanf("%d",&iSize);
 	
-	bRet=CheckPrime(iValue);
+	iPtr=(int*)malloc(sizeof(int)*iSize);
 	
+	printf("\nEnter the number:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
+	{
+		
+		printf("Enter %d number:",iCnt+1);
+		scanf("%d",&iPtr[iCnt]);
+	}
+	
+
+	
+	
+	bRet=Check(iPtr,iSize);
 	if(bRet==true)
 	{
-		printf("%d is prime number\n",iValue);
+		printf("11 is present.\n");
 	}
 	else
 	{
-		printf("%d is not prime number\n",iValue);
-	}	
+		printf("11 is not present.\n");
+	}
+
+	free(iPtr);
 	return 0;
 }
-
-

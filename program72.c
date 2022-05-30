@@ -1,41 +1,64 @@
+
+/*
+input: iRow=4   iCol=4
+
+
+output:
+		2       4       6       8       10
+		1       3       5       7       9
+		2       4       6       8       10
+		1       3       5       7       9
+		
+*/
+
+
 #include<stdio.h>
-#include<stdlib.h>
 
-int CountEven(int Arr[],int iLength)
+void Display(int iRow,int iCol)
 {
-	int iCnt=0;
-	int EvenCnt=0;
-	for(iCnt=0;iCnt<iLength;iCnt++)
-	{
-		if((Arr[iCnt]%2)==0)
-		{
-			EvenCnt++;
-		}
-	}
-	
-	return EvenCnt;
-}
+	int i=0,j=0,iCnt=0;
 
+	
+	for(i=1;i<=iRow;i++)
+	{
+		for(j=1,iCnt=1;j<=iCol,iCnt<=2*iCol;j++,iCnt++)
+		{
+			
+			if((i%2)==0)
+			{
+				if((iCnt%2)!=0)
+				{
+				
+					printf("%d\t",iCnt);
+				}					
+			}
+			else 
+			{
+				if(iCnt%2==0)
+				{
+					
+					printf("%d\t",iCnt);
+					
+				}
+			}
+		}
+		
+		
+		printf("\n");
+		
+	}
+}
 int main()
 {
-	int iSize=0;
-	int *ptr=NULL;
-	int iRet=0;
-	register int iCnt=0;
+	int iValue1=0,iValue2=0;
 	
-	printf("Enter the number of element:\n");
-	scanf("%d",&iSize);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
 	
-	ptr=(int*)malloc(iSize *sizeof(int));
+	printf("Enter the cloumn:");
+	scanf("%d",&iValue2);
 	
-	printf("Enter the element:\n");
-	for(iCnt=0;iCnt<iSize;iCnt++)
-	{
-		scanf("%d",&ptr[iCnt]);
-	}
+	Display(iValue1,iValue2);
 	
-	iRet=CountEven(ptr,iSize);
-	printf("number of Event element are:%d\n",iRet);
-	free(ptr);
 	return 0;
 }

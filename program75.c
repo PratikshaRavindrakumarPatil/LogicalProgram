@@ -1,41 +1,57 @@
+
+/*
+input: iRow=4   iCol=4
+
+
+output:
+		 1       2       3       4       5
+		-1      -2      -3      -4      -5
+		 1       2       3       4       5
+		-1      -2      -3      -4      -5
+		 1       2       3       4       5
+*/
+
+
 #include<stdio.h>
-#include<stdlib.h>
-int DisplayMax(int Arr[],int iLength)
+
+void Display(int iRow,int iCol)
 {
-	int iMax=Arr[0];
-	register int iCnt=0;
+	int i=0,j=0,iCnt=0;
 	
-	for(iCnt=0;iCnt<iLength;iCnt++)
+
+	
+	for(i=1;i<=iRow;i++)
 	{
-		if(iMax<Arr[iCnt])
+		for(j=i;j<=iCol;j++)
 		{
-			iMax=Arr[iCnt];
+			if(j>=i)
+			{
+				printf("%d\t",j);
+				iCnt++;
+			}
+			else
+			{
+				printf("%d\t",iCnt);
+			}
 		}
+		
+		
+		
+		printf("\n");
+		
 	}
-	
-	return iMax;
 }
 int main()
 {
-	int iSize=0,iRet=0;
-	int *iptr=NULL;
-	register int iCnt=0;
+	int iValue1=0,iValue2=0;
 	
-	printf("Enter the number of element:\n");
-	scanf("%d",&iSize);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
 	
-	iptr=(int*)malloc(iSize*sizeof(int));
+	printf("Enter the cloumn:");
+	scanf("%d",&iValue2);
 	
-	printf("Enter the number:\n");
-	for(iCnt=0;iCnt<iSize;iCnt++)
-	{
-		scanf("%d",&iptr[iCnt]);
-	}
-	
-	iRet=DisplayMax(iptr,iSize);
-	printf("Maximum number is:%d\n",iRet);
-	
-	free(iptr);
+	Display(iValue1,iValue2);
 	
 	return 0;
 }
