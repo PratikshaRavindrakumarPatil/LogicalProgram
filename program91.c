@@ -1,31 +1,93 @@
-#include<stdio.h>
+/*
+OUTPUT:
+Nodes are:|10|->|20|->|40|->|30|->|60|->|70|->NULL
 
-void Display(int iRow,int iCol)
+Element:30
+first occured at:4
+
+
+
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
 {
-	int iCnt1=0,iCnt2=0;
+	int data;
+	struct node * next;
+};
+
+typedef struct node NODE;
+typedef struct node * PNODE;
+typedef struct node ** PPNODE;
+
+void InsertFirst(PPNODE head,int no)
+{
+	PNODE newn=NULL;
+	newn=(PNODE)malloc(sizeof(NODE));
 	
-	for(iCnt1=1;iCnt1<=iRow;iCnt1++)
+	
+	newn->data=no;
+	newn->next=NULL;
+	
+	if(*head==NULL)
 	{
-		for(iCnt2=1;iCnt2<=iCol;iCnt2++)
-		{
-			printf("%d\t",iCnt2);
-		}
-		printf("\n");
+		*head=newn;
 	}
+	else
+	{
+		newn->next=*head;
+		*head=newn;
+	}
+	
 }
 
+void Display(PNODE head)
+{
+	printf("Nodes are:");
+	while(head!=NULL)
+	{
+		printf("|%d|->",head->data);
+		head=head->next;
+	}
+	printf("NULL\n");
+}
+
+int SearchFirstOcc(PNODE head,int no)
+{
+	int iCnt=0;
+	while(head!=NULL)
+	{
+		
+		iCnt++;
+		if(head->data==no)
+		{
+			printf("\nElement:%d",head->data);
+			break;
+		}
+		head=head->next;
+	}
+	return iCnt;
+}
 int main()
 {
-	int iValue1=0,iValue2=0;
-	
-	printf("Enter the numberof rows:");
-	scanf("%d",&iValue1);
+	PNODE first=NULL;
+	int iRet=0;
 	
 	
-	printf("Enter the numberof columns:");
-	scanf("%d",&iValue2);
+	InsertFirst(&first,70);
+	InsertFirst(&first,60);
+	InsertFirst(&first,30);
+	InsertFirst(&first,40);
+	InsertFirst(&first,20);
+	InsertFirst(&first,10);
+
+	Display(first);
 	
-	Display(iValue1,iValue2);
+	iRet=SearchFirstOcc(first,30);
+	printf("\nfirst occured at:%d\n",iRet);
+	
 	
 	return 0;
 }

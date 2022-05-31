@@ -1,24 +1,57 @@
+
+/*
+input: iRow=5   iCol=5
+
+
+output:
+    1       2       3       4       5
+			2       3       4       5
+					3       4       5
+							4       5
+									5
+		
+*/
+
+
 #include<stdio.h>
 
-void Display(int iNo)
+void Display(int iRow,int iCol)
 {
-	register int iCnt=0;
-	for(iCnt=iNo;iCnt>=1;iCnt--)
+	int i=0,j=0;
+	
+
+	
+	for(i=1;i<=iRow;i++)
 	{
-		printf("%d\t*\t",iCnt);
+		for(j=1;j<=iCol;j++)
+		{
+			if((j>i)||(i==j))
+			{
+				printf("%d\t",j);
+			}
+			else
+			{
+				printf(" \t");
+			}
+		}
+		
+		
+		
+		printf("\n");
 		
 	}
-	
 }
-
 int main()
 {
-	int iValue=0;
+	int iValue1=0,iValue2=0;
 	
-	printf("Enter the number:");
-	scanf("%d",&iValue);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
 	
-	Display(iValue);
+	printf("Enter the cloumn:");
+	scanf("%d",&iValue2);
+	
+	Display(iValue1,iValue2);
 	
 	return 0;
 }

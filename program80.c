@@ -1,65 +1,58 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
 
-int Search(int Arr[],int iLength,int iNo)
+/*
+input: iRow=5   iCol=5
+
+
+output:
+
+		1       2       3       4       5
+		1       *       *       *       5
+		1       *       *       *       5
+		1       *       *       *       5
+		1       2       3       4       5
+*/
+
+
+#include<stdio.h>
+
+void Display(int iRow,int iCol)
 {
-	int iCnt=0;
+	int i=0,j=0,iCnt=0;
 	
+
 	
-	for(iCnt=0;iCnt<iLength;iCnt++)
+	for(i=1;i<=iRow;i++)
 	{
-		if(Arr[iCnt]==iNo)
+		for(j=1;j<=iCol;j++)
 		{
+			if((i==1)||(i==iCol)||(j==1)||(j==iRow))
+			{
+				printf("%d\t",j);
 				
-			break;
+			}
+			else
+			{
+				printf("*\t");
+			}
 		}
 		
-	}
-	if(iCnt==iLength)
-	{
-		return -1;
-	}
-	else
-	{
-		return iCnt;
+		
+		
+		printf("\n");
+		
 	}
 }
-
 int main()
 {
-	int iSize=0,iValue=0;
-	int *iptr=NULL;
-	register int iCnt=0;
-	int iRet=0;
+	int iValue1=0,iValue2=0;
 	
-	printf("Enter the number of element:\n");
-	scanf("%d",&iSize);
+	printf("Enter the rows:");
+	scanf("%d",&iValue1);
 	
-
+	printf("Enter the cloumn:");
+	scanf("%d",&iValue2);
 	
-	iptr=(int*)malloc(iSize*sizeof(int));
-	
-	printf("Enter the number:\n");
-	for(iCnt=0;iCnt<iSize;iCnt++)
-	{
-		scanf("%d",&iptr[iCnt]);
-	}
-	
-	printf("Enter the number that want to search you:");
-	scanf("%d",&iValue);
-	
-	iRet=Search(iptr,iSize,iValue);
-	if(iRet==-1)
-	{
-		printf("%d is not present in this array.\n",iValue);
-	}
-	else
-	{
-		printf("%d is first occured at %d index in array.\n",iValue,iRet);
-	}
-	
-	free(iptr);
+	Display(iValue1,iValue2);
 	
 	return 0;
 }

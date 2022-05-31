@@ -1,56 +1,90 @@
+/*
+OUTPUT:
+		
+	Nodes are:
+	|11|->|82|->|41|->|17|->|6|->|89|->
+	Reverse nodes are:
+	|11|->|28|->|14|->|71|->|6|->|98|->
 
 
+*/
 
 
 #include<stdio.h>
+#include<stdlib.h>
 
-void Display(int iRow,int iCol)
+struct node
 {
-	int i=0,j=0;
+	int data;
+	struct node * next;
+};
+
+typedef struct node NODE;
+typedef struct node * PNODE;
+typedef struct node ** PPNODE;
+ 
+void InsertFirst(PPNODE head,int no)
+{
+	PNODE newn=NULL;
+	newn=(PNODE)malloc(sizeof(NODE));
 	
-	if(iCol!=iRow)
+	newn->data=no;
+	newn->next=NULL;
+	
+	if(*head==NULL)
 	{
-		printf("Invalid input\n");
-		return;
+		*head=newn;
 	}
-	
-	for(i=1;i<=iRow;i++)
+	else
 	{
-		for(j=1;j<=iCol;j++)
-		{
-			if((i==1)||(i==iCol)||(j==1)||(j==iRow)||(i==j))
-			{
-				printf("*\t");
-			}
-			
-			
-			else
-			{
-				if(i<j)
-				{
-					printf("$\t");
-				}
-				else if(j<i)
-				{
-					printf("&\t");
-				}
-			}
-		}
-		printf("\n");
-		
+		newn->next=*head;
+		*head=newn;
 	}
 }
+
+void Display(PNODE head)
+{
+	printf("Nodes are:\n");
+	while(head!=NULL)
+	{
+		printf("|%d|->",head->data);
+		head=head->next;
+	}
+	printf("\n");
+}
+
+void Reverse(PNODE head)
+{
+	int iDigit=0,iRev=0;
+	printf("Reverse nodes are:\n");
+	while(head!=NULL)
+	{
+		iRev=0;
+		while(head->data!=0)
+		{
+			iDigit=(head->data)%10;
+			iRev=iRev*10+iDigit;
+			head->data=(head->data)/10;
+		
+		}
+		printf("|%d|->",iRev);
+		head=head->next;	
+	}
+}
+
+
 int main()
 {
-	int iValue1=0,iValue2=0;
+	PNODE first=NULL;
+	InsertFirst(&first,89);
+	InsertFirst(&first,6);
+	InsertFirst(&first,17);
+	InsertFirst(&first,41);
+	InsertFirst(&first,82);
+	InsertFirst(&first,11);
 	
-	printf("Enter the rows:");
-	scanf("%d",&iValue1);
+	Display(first);
 	
-	printf("Enter the cloumn:");
-	scanf("%d",&iValue2);
-	
-	Display(iValue1,iValue2);
-	
+	Reverse(first);
 	return 0;
 }

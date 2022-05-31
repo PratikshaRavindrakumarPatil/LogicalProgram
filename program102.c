@@ -1,47 +1,91 @@
+/*
+OUTPUT:
 
+Nodes are:
+|11|->|82|->|141|->|17|->|6|->|89|->
+Palindrome node are:
+|11|->|141|->|6|->
 
-
+*/
 
 #include<stdio.h>
+#include<stdlib.h>
 
-void Display(int iRow,int iCol)
+struct node
 {
-	int i=0,j=0;
+	int data;
+	struct node * next;
+};
+
+typedef struct node NODE;
+typedef struct node * PNODE;
+typedef struct node ** PPNODE;
+ 
+void InsertFirst(PPNODE head,int no)
+{
+	PNODE newn=NULL;
+	newn=(PNODE)malloc(sizeof(NODE));
 	
-	if(iCol!=iRow)
+	newn->data=no;
+	newn->next=NULL;
+	
+	if(*head==NULL)
 	{
-		printf("Invalid input\n");
-		return;
+		*head=newn;
 	}
-	
-	for(i=1;i<=iRow;i++)
+	else
 	{
-		for(j=1;j<=iCol;j++)
-		{
-			if((j==1)|(i==iRow)||(i==j)||(i>j))
-			{
-				printf("*\t");
-			}
-			else
-			{
-				printf(" \t");
-			}
-		}
-		printf("\n");
-		
+		newn->next=*head;
+		*head=newn;
 	}
 }
+
+void Display(PNODE head)
+{
+	printf("Nodes are:\n");
+	while(head!=NULL)
+	{
+		printf("|%d|->",head->data);
+		head=head->next;
+	}
+	printf("\n");
+}
+
+void DisplayPalindrome(PNODE head)
+{
+	int iDigit=0,iRev=0,temp=0;
+	printf("Palindrome node are:\n");
+	while(head!=NULL)
+	{
+		temp=head->data;
+		iRev=0;
+		while(head->data!=0)
+		{
+			iDigit=(head->data)%10;
+			iRev=iRev*10+iDigit;
+			head->data=(head->data)/10;
+		}
+		if(temp==iRev)
+		{
+			printf("|%d|->",temp);
+		}
+		head=head->next;	
+	}
+}
+
+
 int main()
 {
-	int iValue1=0,iValue2=0;
+	PNODE first=NULL;
+	InsertFirst(&first,89);
+	InsertFirst(&first,6);
+	InsertFirst(&first,17);
+	InsertFirst(&first,141);
+	InsertFirst(&first,82);
+	InsertFirst(&first,11);
 	
-	printf("Enter the rows:");
-	scanf("%d",&iValue1);
+	Display(first);
 	
-	printf("Enter the cloumn:");
-	scanf("%d",&iValue2);
-	
-	Display(iValue1,iValue2);
-	
+	DisplayPalindrome(first);
 	return 0;
 }

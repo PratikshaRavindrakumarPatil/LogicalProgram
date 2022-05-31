@@ -1,47 +1,91 @@
-#include<stdio.h>
+/*
+OUTPUT:
 
-void Display(int iRow,int iCol)
+Nodes are:|210|->|120|->|340|->|230|->NULL
+
+Minimum node is:120
+
+
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
 {
-	int i=0,j=0;
+	int data;
+	struct node * next;
+};
+
+typedef struct node NODE;
+typedef struct node * PNODE;
+typedef struct node ** PPNODE;
+
+void InsertFirst(PPNODE head,int no)
+{
+	PNODE newn=NULL;
+	newn=(PNODE)malloc(sizeof(NODE));
 	
-	if(iRow!=iCol)
+	
+	newn->data=no;
+	newn->next=NULL;
+	
+	if(*head==NULL)
 	{
-		printf("Invalid input\n");
-		return ;
+		*head=newn;
 	}
-	
-	for(i=1;i<=iRow;i++)
+	else
 	{
-		for(j=1;j<=iCol;j++)
-		{
-			if(i==j)
-			{
-				printf("$\t");
-			}
-			else
-			{
-				printf("%d\t",j);
-			}
-		}
-		
-		printf("\n");
+		newn->next=*head;
+		*head=newn;
 	}
-	
 	
 }
 
+void Display(PNODE head)
+{
+	printf("Nodes are:");
+	while(head!=NULL)
+	{
+		printf("|%d|->",head->data);
+		head=head->next;
+	}
+	printf("NULL\n");
+}
+
+int Minimum(PNODE head)
+{
+	int iMin=0;
+	iMin=head->data;
+	while(head!=NULL)
+	{
+		
+		if(iMin>(head->data))
+		{
+			iMin=head->data;
+			
+		}
+		head=head->next;
+	}
+	return iMin;
+}
 int main()
 {
-	int iValue1=0,iValue2=0;
-	
-	printf("Enter the numberof rows:");
-	scanf("%d",&iValue1);
+	PNODE first=NULL;
+	int iRet=0;
 	
 	
-	printf("Enter the numberof columns:");
-	scanf("%d",&iValue2);
+
+	InsertFirst(&first,230);
+	InsertFirst(&first,340);
+	InsertFirst(&first,120);
+	InsertFirst(&first,210);
+
+	Display(first);
 	
-	Display(iValue1,iValue2);
+	iRet=Minimum(first);
+	printf("\nMinimum node is:%d\n",iRet);
+	
 	
 	return 0;
 }

@@ -1,47 +1,92 @@
+/*
+Display addition of digit of each node
+OUTPUT:
 
+Nodes are:
+|110|->|6|->|68|->|7|->|40|->|23|->
 
+2       6       14      7       4       5
 
+*/
 
 #include<stdio.h>
+#include<stdlib.h>
 
-void Display(int iRow,int iCol)
+struct node
 {
-	int i=0,j=0;
+	int data;
+	struct node * next;
+};
+
+typedef struct node NODE;
+typedef struct node * PNODE;
+typedef struct node ** PPNODE;
+
+void InsertFirst(PPNODE head,int no)
+{
+	PNODE newn=NULL;
+	newn=(PNODE)malloc(sizeof(NODE));
 	
-	if(iCol!=iRow)
+	newn->data=no;
+	newn->next=NULL;
+	
+	if(*head==NULL)
 	{
-		printf("Invalid input\n");
-		return;
+		*head=newn;
+	}
+	else
+	{
+		newn->next=*head;
+		*head=newn;
 	}
 	
-	for(i=1;i<=iRow;i++)
-	{
-		for(j=1;j<=iCol;j++)
-		{
-			if((i==1)||(i==iCol)||(j==1)||(j==iRow)||(i==j))
-			{
-				printf("*\t");
-			}
-			else
-			{
-				printf(" \t");
-			}
-		}
-		printf("\n");
-		
-	}
 }
+
+void Display(PNODE head)
+{
+	printf("\nNodes are:\n");
+	
+	while(head!=NULL)
+	{
+		printf("|%d|->",head->data);
+		head=head->next;
+	}
+	printf("\n\n");
+}
+
+void SumDigit(PNODE head)
+{
+	int iDigit=0,iSum=0;
+	while(head!=NULL)
+	{
+		iSum=0;
+		while(head->data!=0)
+		{
+			iDigit=(head->data)%10;
+			iSum=iSum+iDigit;
+			head->data=(head->data)/10;
+		}
+		printf("%d\t",iSum);
+		head=head->next;
+	}
+
+}
+
+
 int main()
 {
-	int iValue1=0,iValue2=0;
+	PNODE first=NULL;
 	
-	printf("Enter the rows:");
-	scanf("%d",&iValue1);
+	InsertFirst(&first,23);
+	InsertFirst(&first,40);
+	InsertFirst(&first,7);
+	InsertFirst(&first,68);
+	InsertFirst(&first,6);
+	InsertFirst(&first,110);
 	
-	printf("Enter the cloumn:");
-	scanf("%d",&iValue2);
+	Display(first);
 	
-	Display(iValue1,iValue2);
+	SumDigit(first);
 	
 	return 0;
 }
