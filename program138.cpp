@@ -2,24 +2,20 @@
 OUTPUT:
 
 Enter the first string:
-MarVellOUs
-After the copy string:mARvELLouS
+Marvellous
+After the copy string:MARVELLOUS
 
 */
 #include<iostream>
 using namespace std;
 
-void StrCpyToggle(char *scr,char *dest)
+void StrCpyCap(char *scr,char *dest)
 {
 	while(*scr!='\0')
 	{
 		if((*scr>='a')&&(*scr<='z'))
 		{
 			*scr=*scr-32;
-		}
-		else if((*scr>='A')&&(*scr<='Z'))
-		{
-			*scr=*scr+32;
 		}
 		*dest=*scr;
 		scr++;
@@ -37,7 +33,7 @@ int main()
 	cin.getline(Arr,30);
 	
 	
-	StrCpyToggle(Arr,Brr);
+	StrCpyCap(Arr,Brr);
 	cout<<"After the copy string:"<<Brr<<endl;
 	
 	return 0;

@@ -1,60 +1,47 @@
 /*
-OOP program
-
 OUTPUT:
 
-Enter the number:
-4
-Factorial is:24
-
-
+Enter the first string:
+Marvellous
+Enter the second string:
+Infosystem
+After the concating string:Marvellous Infosystem
 */
 #include<iostream>
 using namespace std;
 
-class Number
+void StrCatX(char *scr,char *dest)
 {
-	private:
-		int iNo;
+	while(*scr!='\0')
+	{
+		scr++;
+	}
 	
-	public:
-	
-		void Accept()
-		{
-			cout<<"Enter the value:"<<endl;
-			cin>>this->iNo;
-		}
+	while(*dest!='\0')
+	{
+		*scr=*dest;
+		scr++;
+		dest++;
 		
-		void Display()
-		{
-			cout<<"Value is:"<<this->iNo<<endl;
-		}
-		
-		int Factorial()
-		{
-			int iFact=1;
-			int iCnt=0;
-			
-			for(iCnt=iNo;iCnt>=1;iCnt--)
-			{
-				iFact=iFact*iCnt;
-			}
-			
-			return iFact;
-		}
-};
-int main()
-{
-	Number nobj;
-	int iRet=0;
+	}
+	scr='\0';
 	
-	
-	nobj.Accept();
-	nobj.Display();
-	
-	iRet=nobj.Factorial();
-	cout<<"Factorial is:"<<iRet<<endl;
-	return 0;
 }
 
-
+int main()
+{
+	char Arr[30];
+	char Brr[30];
+	
+	cout<<"Enter the first string:"<<endl;
+	cin.getline(Arr,30);
+	
+	cout<<"Enter the second string:"<<endl;
+	cin.getline(Brr,30);
+	
+	
+	StrCatX(Arr,Brr);
+	cout<<"After the concating string:"<<Arr;
+	
+	return 0;
+}
