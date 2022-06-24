@@ -1,3 +1,14 @@
+/*
+
+Enter the file name to open:
+LB20.txt
+Count of small character is:27
+
+
+
+*/
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
@@ -24,7 +35,7 @@ int CountSmall(char Fname[])
 	{
 		for(iCnt=0;iCnt<iRet;iCnt++)
 		{
-			if(Data[iCnt]>='a' && Data[iCnt]<='Z' )
+			if(Data[iCnt]>='a' && Data[iCnt]<='z' )
 			{
 				iCount++;
 			}

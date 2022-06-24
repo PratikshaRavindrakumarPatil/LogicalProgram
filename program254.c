@@ -4,13 +4,12 @@
 #include<fcntl.h>
 #include<String.h>
 
-int CountSmall(char Fname[])
+int FileLength(char Fname[])
 {
 	int fd=0;
 	char Data[10]; //Mug aahe
 	int iRet=0;
-	int iCnt=0;
-	int iCount=0;
+	int iSum=0;
 	
 	fd=open(Fname,O_RDWR);
 	if(fd==-1)
@@ -22,17 +21,11 @@ int CountSmall(char Fname[])
 	
 	while((iRet=read(fd,Data,sizeof(Data)))!=0)
 	{
-		for(iCnt=0;iCnt<iRet;iCnt++)
-		{
-			if(Data[iCnt]>='a' && Data[iCnt]<='Z' )
-			{
-				iCount++;
-			}
-		}
+		iSum=iSum+iRet;
 	}
 	
 	close(fd);
-	return iCount;
+	return iSum;
 }
 
 
@@ -44,8 +37,8 @@ int main()
 	printf("Enter the file name to open:\n");
 	scanf("%s",Fname);
 
-	iRet=CountSmall(Fname);
-	printf("Count of small character is:%d\n",iRet);
+	iRet=FileLength(Fname);
+	printf("Length of file is:%d\n",iRet);
 	
 	
 	return 0;

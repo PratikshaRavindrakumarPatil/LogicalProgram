@@ -1,3 +1,14 @@
+/*
+
+Enter the file name to open:
+LB20.txt
+Count of small character is:27
+
+
+
+*/
+
+//Maximum Thruoghput in minimum hardware movement
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
@@ -7,7 +18,7 @@
 int CountSmall(char Fname[])
 {
 	int fd=0;
-	char Data[10]; //Mug aahe
+	char Data[1024]; //Mug aahe
 	int iRet=0;
 	int iCnt=0;
 	int iCount=0;
@@ -24,7 +35,7 @@ int CountSmall(char Fname[])
 	{
 		for(iCnt=0;iCnt<iRet;iCnt++)
 		{
-			if(Data[iCnt]>='a' && Data[iCnt]<='Z' )
+			if(Data[iCnt]>='a' && Data[iCnt]<='z' )
 			{
 				iCount++;
 			}

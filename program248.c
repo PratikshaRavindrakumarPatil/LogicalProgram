@@ -1,13 +1,26 @@
+/*
+
+Enter the file name to open:
+LB20.txt
+Count of capital character is:6
+
+
+
+*/
+
+//Maximum Thruoghput in minimum hardware movement
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
 #include<fcntl.h>
 #include<String.h>
+#define FILESIZE 1024
 
-int CountSmall(char Fname[])
+
+int CountCapital(char Fname[])
 {
 	int fd=0;
-	char Data[10]; //Mug aahe
+	char Data[FILESIZE]; //Mug aahe
 	int iRet=0;
 	int iCnt=0;
 	int iCount=0;
@@ -24,7 +37,7 @@ int CountSmall(char Fname[])
 	{
 		for(iCnt=0;iCnt<iRet;iCnt++)
 		{
-			if(Data[iCnt]>='a' && Data[iCnt]<='Z' )
+			if(Data[iCnt]>='A' && Data[iCnt]<='Z' )
 			{
 				iCount++;
 			}
@@ -44,8 +57,8 @@ int main()
 	printf("Enter the file name to open:\n");
 	scanf("%s",Fname);
 
-	iRet=CountSmall(Fname);
-	printf("Count of small character is:%d\n",iRet);
+	iRet=CountCapital(Fname);
+	printf("Count of capital character is:%d\n",iRet);
 	
 	
 	return 0;
