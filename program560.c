@@ -1,49 +1,62 @@
 /*
-OUTPUT:
 
-Enter the character:
-r
-r is small alphabate.
+Enter the count of number:
+5
+Enter the number:
+11
+21
+51
+11
+1
+frequency of 11 is:2
 
-Enter the character:
-P
-P is not small alphabate.
 
 */
 #include<stdio.h>
-#include<stdbool.h>
+#include<stdlib.h>
 
-bool Check(char ch)
+int Display(int Arr[],int iLength)
 {
+	static int iCnt=0;
+	static int iCount=0;
 	
-	if((ch=='!')||(ch=='@')||(ch=='#')||(ch=='$')||(ch=='%')||(ch=='&'))
+	
+	if(iCnt<iLength)
 	{
-		return true;
+		if((Arr[iCnt]==11))
+		{
+			iCount++;
+		}
+		
+		iCnt++;
+		
+		Display(Arr,iLength);
 	}
-	else
-	{
-		return false;
-	}
+	
+	return iCount;
 }
+
 
 int main()
 {
-	char cValue='\0';
-	bool bRet=false;
+	int iSize=0;
+	int *ptr=NULL;
+	register int iCnt=0;
+	int iRet=0;
 	
-	printf("Enter the character:\n");
-	scanf("%c",&cValue);
-
-	bRet=Check(cValue);
-	if(bRet==true)
+	printf("Enter the count of number:\n");
+	scanf("%d",&iSize);
+	
+	ptr=(int*)malloc(sizeof(int)*iSize);
+	
+	printf("Enter the number:\n");
+	for(iCnt=0;iCnt<iSize;iCnt++)
 	{
-		printf("%c is special symbol.\n",cValue);
-	}
-	else
-	{
-		printf("%c is not special symbol.\n",cValue);
+		scanf("%d",&ptr[iCnt]);
 	}
 	
+	iRet=Display(ptr,iSize);
+	printf("frequency of 11 is:%d\n",iRet);
 	
 	
 	return 0;

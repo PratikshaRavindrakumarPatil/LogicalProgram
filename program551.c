@@ -3,31 +3,39 @@
 Enter the count of number:
 5
 Enter the number:
+11
+20
+40
 15
 21
-30
-40
-12
-15      30
+Difference between summation even and odd number is:13
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Display(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static int iSumE=0;
+	static int iSumO=0;
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if(Arr[iCnt]%2==0)
 		{
-			printf("%d\t",Arr[iCnt]);
+			iSumE=iSumE+Arr[iCnt];
+		}
+		else
+		{
+			iSumO=iSumO+Arr[iCnt];
 		}
 		iCnt++;
 		
 		Display(Arr,iLength);
 	}
 	
+	return (iSumE-iSumO);
 }
 
 
@@ -49,7 +57,9 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	iRet=Display(ptr,iSize);
+	printf("Difference between summation even and odd number is:%d\n",iRet);
+	
 	
 	return 0;
 }

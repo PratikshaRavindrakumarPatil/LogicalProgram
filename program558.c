@@ -3,31 +3,40 @@
 Enter the count of number:
 5
 Enter the number:
-15
-21
+11
+20
+25
 30
 40
-12
-15      30
+Differnce between count of even and odd number is:1
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Display(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static int iCountE=0;
+	static int iCountO=0;
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if((Arr[iCnt]%2)==0)
 		{
-			printf("%d\t",Arr[iCnt]);
+			iCountE++;
 		}
+		else
+		{
+			iCountO++;
+		}
+		
 		iCnt++;
 		
 		Display(Arr,iLength);
 	}
 	
+	return (iCountE-iCountO);
 }
 
 
@@ -49,7 +58,9 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	iRet=Display(ptr,iSize);
+	printf("Differnce between count of even and odd number is:%d\n",iRet);
+	
 	
 	return 0;
 }

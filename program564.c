@@ -1,33 +1,44 @@
 /*
 
 Enter the count of number:
-5
+6
 Enter the number:
-15
+11
 21
+24
+26
+25
 30
-40
-12
-15      30
+Enter the start of limit:
+20
+Enter the end of limit:
+30
+21      24      26      25      30
+
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+void Display(int Arr[],int iLength,int iStart,int iEnd)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+
+	
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if((Arr[iCnt]>iStart)&&(Arr[iCnt<iEnd]))
 		{
 			printf("%d\t",Arr[iCnt]);
 		}
+		
 		iCnt++;
 		
-		Display(Arr,iLength);
+		Display(Arr,iLength,iStart,iEnd);
 	}
 	
+
 }
 
 
@@ -36,7 +47,8 @@ int main()
 	int iSize=0;
 	int *ptr=NULL;
 	register int iCnt=0;
-	int iRet=0;
+	int start=0;
+	int end=0;
 	
 	printf("Enter the count of number:\n");
 	scanf("%d",&iSize);
@@ -49,7 +61,17 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	printf("Enter the start of limit:\n");
+	scanf("%d",&start);
+	
+	printf("Enter the end of limit:\n");
+	scanf("%d",&end);
+	
+	
+	Display(ptr,iSize,start,end);
+	
+	
+	
 	
 	return 0;
 }

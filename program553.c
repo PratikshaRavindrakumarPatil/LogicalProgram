@@ -3,12 +3,12 @@
 Enter the count of number:
 5
 Enter the number:
-15
+10
 21
-30
+15
 40
-12
-15      30
+55
+10      40
 
 */
 #include<stdio.h>
@@ -19,7 +19,7 @@ void Display(int Arr[],int iLength)
 	static int iCnt=0;
 	while(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if(((Arr[iCnt]%5)==0)&&((Arr[iCnt]%2)==0))
 		{
 			printf("%d\t",Arr[iCnt]);
 		}

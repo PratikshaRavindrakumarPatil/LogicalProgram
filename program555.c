@@ -1,14 +1,15 @@
 /*
 
 Enter the count of number:
-5
+6
 Enter the number:
-15
+11
 21
-30
-40
-12
-15      30
+10
+110
+33
+50
+11      110     33
 
 */
 #include<stdio.h>
@@ -19,7 +20,7 @@ void Display(int Arr[],int iLength)
 	static int iCnt=0;
 	while(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if((Arr[iCnt]%11)==0)
 		{
 			printf("%d\t",Arr[iCnt]);
 		}

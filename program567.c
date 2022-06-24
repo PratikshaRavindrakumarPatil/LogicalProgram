@@ -1,33 +1,30 @@
 /*
 
-Enter the count of number:
-5
-Enter the number:
-15
-21
-30
-40
-12
-15      30
+
 
 */
+
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Minimum(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static int iMin=0;
+	
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if(Arr[iCnt]<iMin)
 		{
-			printf("%d\t",Arr[iCnt]);
+			iMin=Arr[iCnt];
 		}
 		iCnt++;
 		
-		Display(Arr,iLength);
+		Minimum(Arr,iLength);
 	}
 	
+	return iMin;
 }
 
 
@@ -49,7 +46,9 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	iRet=Minimum(ptr,iSize);
+	printf("Minimum number is:%d\n",iRet);
+	
 	
 	return 0;
 }

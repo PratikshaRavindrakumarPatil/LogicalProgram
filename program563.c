@@ -3,31 +3,39 @@
 Enter the count of number:
 5
 Enter the number:
-15
+11
 21
-30
-40
-12
-15      30
+51
+101
+121
+Enter the that you want to search:
+51
+51 is present at index:2
+
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Display(int Arr[],int iLength,int iNo)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static int iCount=0;
+	
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if((Arr[iCnt]==iNo))
 		{
-			printf("%d\t",Arr[iCnt]);
+			return -1;
 		}
+		
 		iCnt++;
 		
-		Display(Arr,iLength);
+		Display(Arr,iLength,iNo);
 	}
 	
+	return iCnt;
 }
 
 
@@ -37,6 +45,7 @@ int main()
 	int *ptr=NULL;
 	register int iCnt=0;
 	int iRet=0;
+	int iValue=0;
 	
 	printf("Enter the count of number:\n");
 	scanf("%d",&iSize);
@@ -49,7 +58,12 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	printf("Enter the that you want to search:\n");
+	scanf("%d",&iValue);
+	
+	iRet=Display(ptr,iSize,iValue);
+	printf("%d is present at index:%d\n",iValue,iRet);
+	
 	
 	return 0;
 }

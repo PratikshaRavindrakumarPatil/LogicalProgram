@@ -3,31 +3,36 @@
 Enter the count of number:
 5
 Enter the number:
-15
+11
 21
-30
-40
-12
-15      30
+101
+121
+51
+Maximum number is:121
+
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Maximum(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static int iMax=0;
+	
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if(Arr[iCnt]>iMax)
 		{
-			printf("%d\t",Arr[iCnt]);
+			iMax=Arr[iCnt];
 		}
 		iCnt++;
 		
-		Display(Arr,iLength);
+		Maximum(Arr,iLength);
 	}
 	
+	return iMax;
 }
 
 
@@ -49,7 +54,9 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	iRet=Maximum(ptr,iSize);
+	printf("Maximum number is:%d\n",iRet);
+	
 	
 	return 0;
 }

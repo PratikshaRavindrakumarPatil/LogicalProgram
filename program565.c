@@ -1,33 +1,40 @@
 /*
 
 Enter the count of number:
-5
+6
 Enter the number:
-15
+11
 21
-30
-40
-12
-15      30
+2
+1
+3
+22
+Product of odd number is:693
+
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Display(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static int iMult=1;
+	
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if((Arr[iCnt]%2)!=0)
 		{
-			printf("%d\t",Arr[iCnt]);
+			iMult=iMult*Arr[iCnt];
 		}
+		
 		iCnt++;
 		
 		Display(Arr,iLength);
 	}
 	
+	return iMult;
 }
 
 
@@ -49,7 +56,9 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	iRet=Display(ptr,iSize);
+	printf("Product of odd number is:%d\n",iRet);
+	
 	
 	return 0;
 }

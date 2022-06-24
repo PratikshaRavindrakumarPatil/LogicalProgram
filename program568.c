@@ -1,27 +1,41 @@
 /*
 
 Enter the count of number:
-5
+6
 Enter the number:
-15
-21
-30
-40
-12
-15      30
+123
+2334
+258
+900
+5
+56
+123     258     900
+
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Display(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	int iCount=0;
+	int temp[iLength];
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		temp[iCnt]=Arr[iCnt];
+		iCount=0;
+		
+		while(Arr[iCnt]!=0)
 		{
-			printf("%d\t",Arr[iCnt]);
+			iCount++;
+			Arr[iCnt]=Arr[iCnt]/10;
+			
+		}
+		if(iCount==3)
+		{
+			printf("%d\t",temp[iCnt]);	
 		}
 		iCnt++;
 		
@@ -50,6 +64,8 @@ int main()
 	}
 	
 	Display(ptr,iSize);
+	
+	
 	
 	return 0;
 }

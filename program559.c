@@ -1,33 +1,46 @@
 /*
 
+
 Enter the count of number:
-5
+4
 Enter the number:
-15
 21
-30
-40
-12
-15      30
+51
+101
+121
+11 is not present
+
 
 */
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 
-void Display(int Arr[],int iLength)
+int Display(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static bool flag=false;
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
+		if(Arr[iCnt]==0)
 		{
-			printf("%d\t",Arr[iCnt]);
+			flag=true;
 		}
+		
 		iCnt++;
 		
 		Display(Arr,iLength);
 	}
 	
+	if(flag==true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 
@@ -36,7 +49,7 @@ int main()
 	int iSize=0;
 	int *ptr=NULL;
 	register int iCnt=0;
-	int iRet=0;
+	bool bRet=false;
 	
 	printf("Enter the count of number:\n");
 	scanf("%d",&iSize);
@@ -49,7 +62,16 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	bRet=Display(ptr,iSize);
+	if(bRet==true)
+	{
+		printf("11 is present\n");
+	}
+	else
+	{
+		printf("11 is not present\n");
+	}
+	
 	
 	return 0;
 }

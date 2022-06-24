@@ -3,31 +3,32 @@
 Enter the count of number:
 5
 Enter the number:
-15
-21
+10
+20
 30
 40
-12
-15      30
+50
+Summation of all number is:150
+
 
 */
 #include<stdio.h>
 #include<stdlib.h>
 
-void Display(int Arr[],int iLength)
+int Display(int Arr[],int iLength)
 {
 	static int iCnt=0;
-	while(iCnt<iLength)
+	static int iSum=0;
+	
+	if(iCnt<iLength)
 	{
-		if(((Arr[iCnt]%3)==0)&&((Arr[iCnt]%5)==0))
-		{
-			printf("%d\t",Arr[iCnt]);
-		}
+		iSum=iSum+Arr[iCnt];
 		iCnt++;
 		
 		Display(Arr,iLength);
 	}
 	
+	return iSum;
 }
 
 
@@ -49,7 +50,9 @@ int main()
 		scanf("%d",&ptr[iCnt]);
 	}
 	
-	Display(ptr,iSize);
+	iRet=Display(ptr,iSize);
+	printf("Summation of all number is:%d\n",iRet);
+	
 	
 	return 0;
 }
