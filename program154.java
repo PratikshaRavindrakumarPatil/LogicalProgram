@@ -1,72 +1,52 @@
 /*
+toggle 7th and 10 th bit
+
+
+
 OUTPUT:
-Enter base :
-25
-Enter power :
-4
-base is: 25
-power is: 4
-Result is:390625
 
+Enter the number:
+576
+Updated number is:0
 
-Enter base :
-10
-Enter power :
-7
-base is: 10
-power is: 7
-Result is:10000000
+Enter the number:
+512
+Updated number is:64
+
+Enter the number:
+64
+Updated number is:512
 
 */
+
+
 import java.lang.*;
 import java.util.*;
 
-class Number
+
+class Bitwise
 {
-    private int iNo1,iNo2;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter base : ");
-        this.iNo1 = sobj.nextInt();
-		
-		System.out.println("Enter power : ");
-        this.iNo2 = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("base is: "+this.iNo1);
-		System.out.println("power is: "+this.iNo2);
-    }
-
-    public long Power()
+	public int ToggleBit(int iNo)
 	{
-		long  iPow=1;
-		int iCnt=0;
+		int iMask=0X0000240;
+		int iResult=0;
 		
-		for(iCnt=1;iCnt<=iNo2;iCnt++)
-		{
-			iPow=iPow*iNo1;
-		}
+		iResult=iNo^iMask;
+		return iResult;
 		
-		return iPow;
 	}
 }
-
-class program153
+class program154
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			long iRet=0;
-			
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.Power();
-			System.out.println("Result is:"+iRet);
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int iValue=sobj.nextInt();
+		
+		Bitwise bobj=new Bitwise();
+		int iRet=bobj.ToggleBit(iValue);
+		
+		System.out.println("Updated number is:"+iRet);
+	}
 }

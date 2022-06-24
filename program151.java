@@ -1,90 +1,47 @@
 /*
+On 7th bit
+
+
+
 OUTPUT:
 
-Enter number :
-121
-Value is : 121
-Given number is palindrome
+Enter the number:
+1
+Updated number is:65
 
-Enter number :
--1200
-Value is : -1200
-Given number is not palindrome
+Enter the number:
+64
+Updated number is:64
 
-
-Enter number :
-0022
-Value is : 22
-Given number is palindrome
 
 */
 import java.lang.*;
 import java.util.*;
 
-class Number
+
+class Bitwise
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Value is : "+this.iNo);
-    }
-
-    public boolean CheckPalindrome()
+	public int OnBit(int iNo)
 	{
-		int iDigit=0;
-		int iRev=0,Temp=0;
+		int iMask=0X00000040;
+		int iResult=0;
 		
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
-		Temp=iNo;
+		iResult=iNo|iMask;
+		return iResult;
 		
-		while(iNo!=0)
-		{
-			iDigit=iNo%10;
-			iRev=iRev*10+iDigit;
-			iNo=iNo/10;
-		}
-		
-		if(iRev==Temp)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
 	}
 }
-
 class program151
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			boolean bRet=false;
-			
-            nobj.Accept();
-            nobj.Display();
-
-            bRet=nobj.CheckPalindrome();
-			if(bRet==true)
-			{
-				System.out.println("Given number is palindrome");
-			}
-			else
-			{
-				System.out.println("Given number is not palindrome");
-			}
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int iValue=sobj.nextInt();
+		
+		Bitwise bobj=new Bitwise();
+		int iRet=bobj.OnBit(iValue);
+		
+		System.out.println("Updated number is:"+iRet);
+	}
 }

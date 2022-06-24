@@ -1,35 +1,37 @@
 /*
-OUTPUT:
+Maximum number is:21
+Maximum number is:2.3
 
-Enter the string:Jay Ganesh
-Length of String is:10
 
 */
 #include<iostream>
 using namespace std;
 
-int strlenX(char str[])
+template<class T>
+T Maximum(T iNo1,T iNo2,T iNo3)
 {
-	int Count=0;
-	while(*str!='\0')
+	if((iNo1>iNo2)&&(iNo1>iNo3))
 	{
-		Count++;
-		str++;
-		
+		return iNo1;
 	}
-	return Count;
+	else if((iNo2>iNo1)&&(iNo2>iNo3))
+	{
+		return iNo2;
+	}
+	else if((iNo3>iNo1)&&(iNo3>iNo2))
+	{
+		return iNo3;
+	}	
 }
+
+
 
 int main()
 {
+	int iRet=Maximum(11,21,1);
+	cout<<"Maximum number is:"<<iRet<<endl;
 	
-	char Arr[20];
-	int iRet=0;
-	
-	cout<<"Enter the string:";
-	cin.getline(Arr,20);
-	
-	iRet=strlenX(Arr);
-	cout<<"Length of String is:"<<iRet<<endl;
+	float fRet=Maximum(1.1,1.1,2.3);
+	cout<<"Maximum number is:"<<fRet<<endl;
 	return 0;
 }

@@ -1,96 +1,38 @@
-/*
-OUTPUT:
-Enter the size of array:
-6
-
-Enter the element:
-12
-21
-20
-40
-2
-101
-
-Elements of array are:
-12      21      20      40      2       101
-
-Summation of even nodes are:74
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class N_Number
+class Bitwise
 {
-	private int Arr[];
-	
-	public N_Number(int iLength)
-	{
-		Arr=new int[iLength];
-	}
-	
-	public void Accept()
-	{
-		int iCnt=0;
-		Scanner sobj=new Scanner(System.in);
+    public int OnBit(int iNo)
+    {
+        int iMask =0X00000000;
+        int iResult = 0;
+		int iCount=0;
 		
-		System.out.println("Enter the element:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		iMask=iMask<<iNo;
+		if(iMask==)
 		{
-			Arr[iCnt]=sobj.nextInt();
+			iCount++;
 		}
-		
-	}
+        iResult = iNo ^ iMask;
+		return iCount;
+    }
 	
-	public void Display()
-	{
-		int iCnt=0;
-		System.out.println("Elements of array are:");
-		
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
-		{
-			System.out.print(Arr[iCnt]+"\t");
-		}
-	}
-	
-	public int SumEven()
-	{
-		int iCnt=0,iSum=0;
-		
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
-		{
-			if((Arr[iCnt]%2)==0)
-			{
-				iSum=iSum+Arr[iCnt];
-			}
-		}
-		return iSum;
-	}
 }
 
 class program161
 {
-	public static void main(String arg[])
-	{
-		Scanner sobj=new Scanner(System.in);
+    public static void main(String arg[])
+    {
+        Scanner sobj = new Scanner(System.in);  // 9th July
+
+        System.out.println("Enter number ");
+        int value = sobj.nextInt();
+
+        Bitwise bobj = new Bitwise();
+        int iRet = bobj.OnBit(value);
 		
-		int iSize=0,iRet=0;
-		
-		System.out.println("Enter the size of array:");
-		iSize=sobj.nextInt();
-		
-		N_Number nobj=new N_Number(iSize);
-		System.out.println();
-		
-		nobj.Accept();
-		System.out.println();
-		
-		nobj.Display();
-		System.out.println();
-		System.out.println();
-		
-		iRet=nobj.SumEven();
-		System.out.println("Summation of even nodes are:"+iRet);
-		System.out.println();
-	}
+		System.out.println("Updated number is:"+iRet);
+      
+    }
 }

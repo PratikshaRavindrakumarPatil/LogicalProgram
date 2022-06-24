@@ -1,38 +1,33 @@
 /*
-OUTPUT:
-
-Enter the string:Hello
-Occurence of l is:2
+Addition is:305
+Addition is:64.7
 
 */
 #include<iostream>
 using namespace std;
 
-int strlenX(char str[])
+template<class T>
+T ArraySum(T Arr[],int iSize)
 {
-	int Count=0;
-	while(*str!='\0')
+	int iCnt=0;
+	T Sum;
+	for(iCnt=0;iCnt<iSize;iCnt++)
 	{
-		if((*str=='l'))//||(*str!='L')
-		{
-			Count++;
-		}
-		str++;
-		
+		Sum=Sum+Arr[iCnt];
 	}
-	return Count;
+	return Sum;
 }
 
 int main()
 {
+	int Arr[]={11,21,51,101,121};
+	int iRet=ArraySum(Arr,5);
+	cout<<"Addition is:"<<iRet<<endl;
+
+
+	float Brr[]={11.1,20.1,32.4,1.1};
+	float fRet=ArraySum(Brr,4);
+	cout<<"Addition is:"<<fRet<<endl;
 	
-	char Arr[20];
-	int iRet=0;
-	
-	cout<<"Enter the string:";
-	cin.getline(Arr,20);
-	
-	iRet=strlenX(Arr);
-	cout<<"Occurence of l is:"<<iRet<<endl;
 	return 0;
 }

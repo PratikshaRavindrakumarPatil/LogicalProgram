@@ -1,70 +1,62 @@
 /*
-OUTPUT:
-Enter the size of array:
-5
-Enter the element:
-11
-21
-51
-101
-111
-Elements of array are:
-11      21      51      101     111
+output:
+
+Enter the number:
+10
+Enter the position:
+2
+Bit is on.
 
 
 */
 import java.lang.*;
 import java.util.*;
 
-class N_Number
+class Bitwise
 {
-	private int Arr[];
-	
-	public N_Number(int iLength)
+	boolean ChechBit(int iNo,int iPos)
 	{
-		Arr=new int[iLength];
-	}
-	
-	public void Accept()
-	{
-		int iCnt=0;
-		Scanner sobj=new Scanner(System.in);
+		int iMask=0X00000001;
+		int iResult=0;
 		
-		System.out.println("Enter the element:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		iMask=iMask<<(iPos-1);
+		iResult=iMask & iNo;
+		
+		
+		if(iResult==0)
 		{
-			Arr[iCnt]=sobj.nextInt();
+			return false;
 		}
-		
-	}
-	
-	public void Display()
-	{
-		int iCnt=0;
-		System.out.println("Elements of array are:");
-		
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		else
 		{
-			System.out.print(Arr[iCnt]+"\t");
+			return true;
 		}
-	}
 	
+	}
 }
+
 
 class program156
 {
 	public static void main(String arg[])
 	{
 		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int iValue=sobj.nextInt();
 		
-		int iSize=0;
+		System.out.println("Enter the position:");
+		int iValue2=sobj.nextInt();
 		
-		System.out.println("Enter the size of array:");
-		iSize=sobj.nextInt();
+		Bitwise bobj=new Bitwise();
+		boolean iRet=bobj.ChechBit(iValue,iValue2);
 		
-		N_Number nobj=new N_Number(iSize);
-		nobj.Accept();
-		nobj.Display();
-		
+		if(iRet==true)
+		{
+			System.out.println("Bit is on.");
+		}
+		else
+		{
+			System.out.println("Bit is off.");
+		}
 	}
 }

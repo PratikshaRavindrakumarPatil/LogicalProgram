@@ -1,106 +1,46 @@
 /*
+On first 4 bit
+
+
+
 OUTPUT:
 
-Enter number :
-153
-Value is : 153
-Given number is amstrong number.
-
-Enter number :
-1634
-Value is : 1634
-Given number is amstrong number.
+Enter the number:
+15
+Updated number is:15
 
 
-Enter number :
-111
-Value is : 111
-Given number is not amstrong number.
-
-
+Enter the number:
+0
+Updated number is:15
 */
 import java.lang.*;
 import java.util.*;
 
-class Number
+
+class Bitwise
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Value is : "+this.iNo);
-    }
-
-    public boolean CheckAmstrong()
+	public int OnBit(int iNo)
 	{
-		int iCount=0,iCnt=0;
-		int Temp=0,iDigit=0,iPow=1,iSum=0;
+		int iMask=0X000000F;
+		int iResult=0;
 		
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
-		Temp=iNo;
-		
-		while(iNo!=0)
-		{	
-			iCount++;
-			iNo=iNo/10;
-		}
-		
-		iNo=Temp;
-		
-		while(iNo!=0)
-		{
-			iPow=1;
-			iDigit=iNo%10;
-			for(iCnt=1;iCnt<=iCount;iCnt++)
-			{
-				iPow=iPow*iDigit;
-			}
-			iSum=iSum+iPow;
-			iNo=iNo/10;
-		}
-		
-		if(iSum==Temp)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
+		iResult=iNo|iMask;
+		return iResult;
 		
 	}
 }
-
 class program155
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			boolean bRet=false;
-			
-            nobj.Accept();
-            nobj.Display();
-
-            bRet=nobj.CheckAmstrong();
-			if(bRet==true)
-			{
-				System.out.println("Given number is amstrong number.");
-			}
-			else
-			{
-				System.out.println("Given number is not amstrong number.");
-			}
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int iValue=sobj.nextInt();
+		
+		Bitwise bobj=new Bitwise();
+		int iRet=bobj.OnBit(iValue);
+		
+		System.out.println("Updated number is:"+iRet);
+	}
 }

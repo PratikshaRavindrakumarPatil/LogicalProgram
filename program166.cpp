@@ -1,38 +1,29 @@
 /*
-OUTPUT:
 
-Enter the string:Jay Ganesh
-J
-a
-y
+Multiplication is:231
+Multiplication is:1.21
 
-G
-a
-n
-e
-s
-h
 
 */
 #include<iostream>
 using namespace std;
 
-void Display(char str[])
+template<class T>
+T Multiplication(T iNo1,T iNo2)
 {
-	while(*str!='\0')
-	{
-		cout<<*str<<endl;
-		str++;
-	}
+	T iAns=0;
+	iAns=iNo1*iNo2;
+	return iAns;
 }
+
+
 
 int main()
 {
+	int iRet=Multiplication(11,21);
+	cout<<"Multiplication is:"<<iRet<<endl;
 	
-	char Arr[20];
-	cout<<"Enter the string:";
-	cin.getline(Arr,20);
-	
-	Display(Arr);
+	float fRet=Multiplication(1.1,1.1);
+	cout<<"Multiplication is:"<<fRet<<endl;
 	return 0;
 }

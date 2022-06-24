@@ -1,52 +1,57 @@
 /*
-OUTPUT:
 
-Enter number :
-1234
-Value is : 1234
-4       3       2       1
+Enter the number:
+135282752
+Bit is on
+
+
+
+
 
 */
 import java.lang.*;
 import java.util.*;
 
-class Number
+
+class Bitwise
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Value is : "+this.iNo);
-    }
-
-    public void DisplayDigit()
+	public boolean CheckBit(int iNo)
 	{
-		int iDigit=0;
-		while(iNo!=0)
+		int iMask=0X08104040;
+		int iResult=0;
+		
+		iResult=iNo&iMask;
+		
+		if(iResult==0)
 		{
-			iDigit=iNo%10;
-			System.out.print(iDigit+"\t");
-			iNo=iNo/10;
+			return false;
+		}
+		else
+		{
+			return true;
 		}
 	}
 }
 
+
 class program143
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-            nobj.Accept();
-            nobj.Display();
-
-            nobj.DisplayDigit();
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int iValue=sobj.nextInt();
+		
+		Bitwise bobj=new Bitwise();
+		boolean bRet=bobj.CheckBit(iValue);
+		
+		if(bRet==true)
+		{
+			System.out.println("Bit is on");
+		}
+		else
+		{
+			System.out.println("Bit is off");
+		}
+	}
 }

@@ -1,68 +1,58 @@
 /*
-OUTPUT:
-
-Enter number :
-98345
-Value is : 98345
-Total digits are:5
 
 
-Enter number :
-37
-Value is : 37
-Total digits are:2
+Enter the number:
+448
+Bit is on
 
+
+
+
+1 and 32 bit check
 */
 import java.lang.*;
 import java.util.*;
 
-class Number
+
+class Bitwise
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Value is : "+this.iNo);
-    }
-
-    public int CountDigit()
+	public boolean CheckBit(long iNo)
 	{
+		long iMask=0X80000001;
+		long iResult=0;
 		
-		int iCnt=0;
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
+		iResult=iNo&iMask;
 		
-		while(iNo!=0)
+		if(iResult==0)
 		{
-			
-			iCnt++;
-			iNo=iNo/10;
+			return false;
 		}
-		return iCnt;
+		else
+		{
+			return true;
+		}
 	}
 }
 
+
 class program145
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			int iRet=0;
-			
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.CountDigit();
-			System.out.println("Total digits are:"+iRet);
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		long iValue=sobj.nextInt();
+		
+		Bitwise bobj=new Bitwise();
+		boolean bRet=bobj.CheckBit(iValue);
+		
+		if(bRet==true)
+		{
+			System.out.println("Bit is on");
+		}
+		else
+		{
+			System.out.println("Bit is off");
+		}
+	}
 }

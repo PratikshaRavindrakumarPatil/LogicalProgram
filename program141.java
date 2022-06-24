@@ -1,86 +1,57 @@
 /*
-OUTPUT:
+Enter the number:
+16416
+Bit is on
 
 Enter the number:
 11
-Entered number is:11
-Given number is prime
+Bit is off
 
-Enter the number:
-21
-Entered number is:21
-Given number is not prime
 
 */
-
 import java.lang.*;
 import java.util.*;
 
-class Number
+
+class Bitwise
 {
-	private int iNo;
-	
-	public void Accept()
+	public boolean CheckBit(int iNo)
 	{
-		Scanner sobj=new Scanner(System.in);
-		System.out.println("Enter the number:");
-		this.iNo=sobj.nextInt();
+		int iMask=0X00004000;
+		int iResult=0;
 		
-	}
-	
-	public void Display()
-	{
-		System.out.println("Entered number is:"+this.iNo);
-	}
-	
-	public boolean CheckPrime()
-	{
-		int iCnt=0;
-		int iCount=0;
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
+		iResult=iNo&iMask;
 		
-		for(iCnt=2;iCnt<iNo;iCnt++)
-		{
-			if((iNo%iCnt)==0)
-			{
-				iCount++;
-			}
-		}
-		
-		if(iCount==0)
-		{
-			return true;
-		}
-		else
+		if(iResult==0)
 		{
 			return false;
 		}
-		
+		else
+		{
+			return true;
+		}
 	}
 }
 
-class program142
+
+class program141
 {
 	public static void main(String arg[])
 	{
-		Number nobj=new Number();
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int iValue=sobj.nextInt();
 		
-		boolean bRet=false;
-		nobj.Accept();
-		nobj.Display();
-		bRet=nobj.CheckPrime();
+		Bitwise bobj=new Bitwise();
+		boolean bRet=bobj.CheckBit(iValue);
 		
 		if(bRet==true)
 		{
-			System.out.println("Given number is prime");
+			System.out.println("Bit is on");
 		}
 		else
 		{
-			System.out.println("Given number is not prime");
+			System.out.println("Bit is off");
 		}
-		
 	}
 }

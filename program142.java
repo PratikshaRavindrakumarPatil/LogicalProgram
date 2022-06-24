@@ -1,74 +1,56 @@
 /*
-OUTPUT:
 
 Enter the number:
-20
-Entered number is:20
-1       2       4       5       10
-Total factors are:5
+131088
+Bit is on
 
-Enter the number:
--10
-Entered number is:-10
-1       2       5
-Total factors are:3
+
+
 
 */
-
 import java.lang.*;
 import java.util.*;
 
-class Number
+
+class Bitwise
 {
-	private int iNo;
-	
-	public void Accept()
+	public boolean CheckBit(int iNo)
 	{
-		Scanner sobj=new Scanner(System.in);
-		System.out.println("Enter the number:");
-		this.iNo=sobj.nextInt();
+		int iMask=0X00020010;
+		int iResult=0;
 		
-	}
-	
-	public void Display()
-	{
-		System.out.println("Entered number is:"+this.iNo);
-	}
-	
-	public int CountFactor()
-	{
-		int iCnt=0;
-		int iCount=0;
-		if(iNo<0)
+		iResult=iNo&iMask;
+		
+		if(iResult==0)
 		{
-			iNo=-iNo;
+			return false;
 		}
-		
-		for(iCnt=1;iCnt<=iNo/2;iCnt++)
+		else
 		{
-			if((iNo%iCnt)==0)
-			{
-				System.out.print(iCnt+"\t");
-				iCount++;
-			}
+			return true;
 		}
-		
-		return iCount;
 	}
 }
+
 
 class program142
 {
 	public static void main(String arg[])
 	{
-		Number nobj=new Number();
-		int iRet=0;
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int iValue=sobj.nextInt();
 		
-		nobj.Accept();
-		nobj.Display();
-		iRet=nobj.CountFactor();
-		System.out.println();
-		System.out.println("Total factors are:"+iRet);
+		Bitwise bobj=new Bitwise();
+		boolean bRet=bobj.CheckBit(iValue);
 		
+		if(bRet==true)
+		{
+			System.out.println("Bit is on");
+		}
+		else
+		{
+			System.out.println("Bit is off");
+		}
 	}
 }
