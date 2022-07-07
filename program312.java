@@ -1,11 +1,10 @@
 /*
 
 Enter the string:
-India is my country
-India
-is
-my
-country
+asdsd lskdlskjdf  sdf
+Length of largest word is:10
+Largest word is:lskdlskjdf
+
 
 
 */
@@ -13,7 +12,7 @@ country
 import java.lang.*;
 import java.util.*;
 
-class program309
+class program311
 {
 	public static void main(String arg[])
 	{
@@ -30,12 +29,19 @@ class program309
 		
 		String Brr[]=newstr2.split(" ");
 		
+		int iMax=0;
+		int index=0;
+		
 		for(int i=0;i<Brr.length;i++)
 		{
-			System.out.println(Brr[i]);
+			if((Brr[i].length())>=iMax)
+			{
+				index=i;
+				iMax=Brr[i].length();
+			}
 		}
 		
-		
-	
+		System.out.println("Length of largest word is:"+iMax);
+		System.out.println("Largest word is:"+Brr[index]);
 	}
 }

@@ -1,19 +1,18 @@
 /*
 
 Enter the string:
-India is my country
-India
-is
-my
-country
+Marvellous Infosystem
+suollevraM metsysofnI
+
 
 
 */
 
-import java.lang.*;
+import java.io.*;
 import java.util.*;
 
-class program309
+
+class program315
 {
 	public static void main(String arg[])
 	{
@@ -23,19 +22,18 @@ class program309
 		String str=sobj.nextLine();
 		
 		char Arr[]=str.toCharArray();
+		int frequency[]=new int[26];
+
+		int i=0;
 		
-		String newstr=str.replaceAll("\\s+"," ");
-		
-		String newstr2=newstr.trim();
-		
-		String Brr[]=newstr2.split(" ");
-		
-		for(int i=0;i<Brr.length;i++)
+		for(i=0;i<Arr.length;i++)
 		{
-			System.out.println(Brr[i]);
+			frequency[Arr[i]-97]++;
 		}
 		
-		
-	
+		for(i=0;i<frequency.length;i++)
+		{
+			System.out.println(frequency[i]);
+		}
 	}
 }

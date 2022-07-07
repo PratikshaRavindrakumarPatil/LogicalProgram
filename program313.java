@@ -2,10 +2,11 @@
 
 Enter the string:
 India is my country
-India
-is
-my
-country
+aidnI
+si
+ym
+yrtnuoc
+
 
 
 */
@@ -13,7 +14,8 @@ country
 import java.lang.*;
 import java.util.*;
 
-class program309
+
+class program313
 {
 	public static void main(String arg[])
 	{
@@ -22,7 +24,6 @@ class program309
 		System.out.println("Enter the string:");
 		String str=sobj.nextLine();
 		
-		char Arr[]=str.toCharArray();
 		
 		String newstr=str.replaceAll("\\s+"," ");
 		
@@ -32,10 +33,8 @@ class program309
 		
 		for(int i=0;i<Brr.length;i++)
 		{
-			System.out.println(Brr[i]);
+			StringBuffer sb=new StringBuffer(Brr[i]);
+			System.out.println(sb.reverse());
 		}
-		
-		
-	
 	}
 }

@@ -1,7 +1,13 @@
-import java.lang.*;
+/*
+
+
+*/
+
+import java.io.*;
 import java.util.*;
 
-class program304
+
+class program316
 {
 	public static void main(String arg[])
 	{
@@ -11,13 +17,18 @@ class program304
 		String str=sobj.nextLine();
 		
 		char Arr[]=str.toCharArray();
+		int frequency[]=new int[26];
+
+		int i=0;
 		
-		int iCnt=0;
-		
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		for(i=0;i<Arr.length;i++)
 		{
-			System.out.println(Arr[iCnt]);
+			frequency[Arr[i]-'a']++;
 		}
-	
+		
+		for(i=0;i<frequency.length;i++)
+		{
+			System.out.println(frequency[i]);
+		}
 	}
 }

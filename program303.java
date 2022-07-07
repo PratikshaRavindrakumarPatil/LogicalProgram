@@ -1,78 +1,59 @@
-/*
-OUTPUT:
-
-Enter the number of row:
-6
-Enter the number of columns:
-6
-1       2       3       4       5       6
-1       2                               6
-1               3                       6
-1                       4               6
-1                               5       6
-1       2       3       4       5       6
-
-
-*/
 import java.lang.*;
 import java.util.*;
-
-class Pattern
-{
-    private int iRow, iCol;
-
-    public Pattern(int iNo1, int iNo2)
-    {
-        iRow = iNo1;
-        iCol = iNo2;
-    }
-
-    public void DisplayPattern()
-    {
-        int i=0,j=0;
-			
-		if(iRow!=iCol)
-		{
-			System.out.println("Please enter square dimension");
-			return;
-		}			
-			
-		for(i=1;i<=iRow;i++)
-		{
-			for(j=1;j<=iCol;j++)
-			{
-				if((j==1)||(j==iCol)||(i==1)||(i==iRow)||(i==j))
-				{
-					System.out.print(j+"\t");
-				}
-				else
-				{
-					System.out.print(" \t");
-				}
-				
-			}
-			
-			System.out.println();
-		}
-    }
-}
+import java.io.*;
 
 class program303
 {
     public static void main(String arg[])
     {
-		int iValue1=0,iValue2=0;
+		try
+		{
+			Scanner sobj=new Scanner(System.in);
+			
+			System.out.println("Enter the packed file name:");
+			String PackFileName=sobj.nextLine();
 		
-		Scanner sobj=new Scanner(System.in);
+			File fobj=new File(PackFileName);
+			
+			FileInputStream fiobj=new FileInputStream(fobj);
+			byte Headerarray[]=new byte[100];
+			
+			//fiobj.read(Headerarray,0,100);
 		
-		System.out.println("Enter the number of row:");
-		iValue1=sobj.nextInt();	
+			String HeaderString=new String(Headerarray);
+			System.out.println(HeaderString);
 		
-		System.out.println("Enter the number of columns:");
-		iValue2=sobj.nextInt();	
 		
-        Pattern obj = new Pattern(iValue1,iValue2);
+			String HeaderString=null;
+			String tokens[];
+			int ret=0;
+			
+			while(ret=(fiobj.read(Headerarray,0,100))>0)
+			{
+				HeaderString=new String(Headerarray);
+				tokens=HeaderString.split(" ");
+			
+				
+				File fobjnew=new File(tokens[0]);
+				boolean bobj=fobjnew.createNewFile();
+				
+				int size=Integer.parseInt(tokens[1]);
+				byte dataarry[]=new dataarry[size];
+				
+				fiobj.read(dataarry,0,size);
+				
+			}
+			
+			System.out.println("File name:"+tokens[0]);
+			System.out.println("File size:"+tokens[1]);
+		
+			
+		
+		}
+		catch(Exception obj)
+		{
+			System.out.println(obj);
+		}
 
-        obj.DisplayPattern();
     }
 }

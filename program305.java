@@ -1,7 +1,7 @@
 import java.lang.*;
 import java.util.*;
 
-class program304
+class program305
 {
 	public static void main(String arg[])
 	{
@@ -13,11 +13,17 @@ class program304
 		char Arr[]=str.toCharArray();
 		
 		int iCnt=0;
+		int Count=0;
 		
 		for(iCnt=0;iCnt<Arr.length;iCnt++)
 		{
-			System.out.println(Arr[iCnt]);
+			if((Arr[iCnt]>='a') && (Arr[iCnt]<='z'))
+			{
+				Count++;
+			}
 		}
+		
+		System.out.println("Number of small letter are:"+Count);
 	
 	}
 }

@@ -1,77 +1,50 @@
 /*
-OUTPUT:
-
-Enter the number of row:
-5
-Enter the number of columns:
-5
-*       #       #       #       #
-*       *       #       #       #
-*       *       *       #       #
-*       *       *       *       #
-*       *       *       *       *
-
-
 
 */
-import java.lang.*;
+
+import java.io.*;
 import java.util.*;
-
-class Pattern
-{
-    private int iRow, iCol;
-
-    public Pattern(int iNo1, int iNo2)
-    {
-        iRow = iNo1;
-        iCol = iNo2;
-    }
-
-    public void DisplayPattern()
-    {
-        int i=0,j=0;
-			
-		if(iRow!=iCol)
-		{
-			System.out.println("Please enter square dimension");
-			return;
-		}			
-			
-		for(i=1;i<=iRow;i++)
-		{
-			for(j=1;j<=iCol;j++)
-			{
-				if(i>=j)
-				{
-					System.out.print("*\t");
-				}
-				else
-				{
-					System.out.print("#\t");
-				}
-			}
-			
-			System.out.println();
-		}
-    }
-}
+import java.lang.*;
+import java.nio.charset.StandardCharsets;
 
 class program289
 {
-    public static void main(String arg[])
-    {
-		int iValue1=0,iValue2=0;
-		
-		Scanner sobj=new Scanner(System.in);
-		
-		System.out.println("Enter the number of row:");
-		iValue1=sobj.nextInt();	
-		
-		System.out.println("Enter the number of columns:");
-		iValue2=sobj.nextInt();	
-		
-        Pattern obj = new Pattern(iValue1,iValue2);
-
-        obj.DisplayPattern();
-    }
+	public static void main(String arg[])
+	{
+		try
+		{
+			Scanner sobj=new Scanner(System.in);
+			System.out.println("Enter the file name:");
+			String Filename=sobj.nextLine();
+			
+			File fobj=new File(Filename);
+			
+			if(fobj.exists())
+			{
+				FileInputStream fiobj=new FileInputStream(fobj);
+				byte buffer[]=new byte[100];
+				int ret=0;
+				int sum=0;
+				
+				while((ret=fiobj.read(buffer))!=-1)
+				{
+					sum=sum+ret;
+					
+					String str1=new String(buffer,StandardCharsets.UTF_8);
+					System.out.println(str1);
+				}
+				//System.out.println("Data read:"+sum);
+				
+			}
+			else
+			{
+				System.out.println("There is no such file");
+			}
+			
+		}
+		catch(IOException obj)
+		{
+			System.out.println(obj);
+		}
+	}
 }

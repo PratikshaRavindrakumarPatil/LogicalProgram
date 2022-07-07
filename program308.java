@@ -1,19 +1,15 @@
 /*
 
 Enter the string:
-India is my country
-India
-is
-my
-country
-
+    India      is    my country
+Number of words are:4
 
 */
 
 import java.lang.*;
 import java.util.*;
 
-class program309
+class program308
 {
 	public static void main(String arg[])
 	{
@@ -24,18 +20,14 @@ class program309
 		
 		char Arr[]=str.toCharArray();
 		
+		
 		String newstr=str.replaceAll("\\s+"," ");
 		
 		String newstr2=newstr.trim();
 		
 		String Brr[]=newstr2.split(" ");
 		
-		for(int i=0;i<Brr.length;i++)
-		{
-			System.out.println(Brr[i]);
-		}
-		
-		
+		System.out.println("Number of words are:"+Brr.length);
 	
 	}
 }

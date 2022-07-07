@@ -1,11 +1,9 @@
 /*
 
 Enter the string:
-India is my country
-India
-is
-my
-country
+Marvellous Infosystem
+suollevraM metsysofnI
+
 
 
 */
@@ -13,7 +11,8 @@ country
 import java.lang.*;
 import java.util.*;
 
-class program309
+
+class program314
 {
 	public static void main(String arg[])
 	{
@@ -22,20 +21,23 @@ class program309
 		System.out.println("Enter the string:");
 		String str=sobj.nextLine();
 		
-		char Arr[]=str.toCharArray();
-		
 		String newstr=str.replaceAll("\\s+"," ");
 		
 		String newstr2=newstr.trim();
 		
 		String Brr[]=newstr2.split(" ");
 		
+		StringBuffer finalstr=new StringBuffer();
+		
 		for(int i=0;i<Brr.length;i++)
 		{
-			System.out.println(Brr[i]);
+			StringBuffer sb=new StringBuffer(Brr[i]);
+			finalstr.append((sb.reverse()).append(" "));
 		}
 		
 		
-	
+		
+		String finalstr2=new String(finalstr);
+		System.out.println(finalstr2.trim());
 	}
 }

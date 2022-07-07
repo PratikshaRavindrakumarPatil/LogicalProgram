@@ -1,75 +1,54 @@
 /*
-OUTPUT:
-
-Enter the number of row:
-4
-Enter the number of columns:
-4
-@
-@       @
-@       @       @
-@       @       @       @
-
 
 */
-import java.lang.*;
+
+import java.io.*;
 import java.util.*;
+import java.lang.*;
 
-class Pattern
-{
-    private int iRow, iCol;
-
-    public Pattern(int iNo1, int iNo2)
-    {
-        iRow = iNo1;
-        iCol = iNo2;
-    }
-
-    public void DisplayPattern()
-    {
-        int i=0,j=0;
-			
-		if(iRow!=iCol)
-		{
-			System.out.println("Please enter square dimension");
-			return;
-		}			
-			
-		for(i=1;i<=iRow;i++)
-		{
-			for(j=1;j<=i;j++)
-			{
-				if(i>=j)
-				{
-					System.out.print("@\t");
-				}
-				else
-				{
-					System.out.print(" \t");
-				}
-			}
-			
-			System.out.println();
-		}
-    }
-}
 
 class program294
 {
-    public static void main(String arg[])
-    {
-		int iValue1=0,iValue2=0;
-		
-		Scanner sobj=new Scanner(System.in);
-		
-		System.out.println("Enter the number of row:");
-		iValue1=sobj.nextInt();	
-		
-		System.out.println("Enter the number of columns:");
-		iValue2=sobj.nextInt();	
-		
-        Pattern obj = new Pattern(iValue1,iValue2);
-
-        obj.DisplayPattern();
-    }
+	public static void main(String arg[])
+	{
+		try
+		{
+			Scanner sobj=new Scanner(System.in);
+			System.out.println("Enter the directory name:");
+			String foldername=sobj.nextLine();
+			
+			File dobj=new File(foldername);
+			
+			File allfiles[]=dobj.listFiles();
+			
+			String name;
+			
+			File fobjnew=new File("Combine.txt");
+			boolean bobj1=fobjnew.createNewFile(); 
+			FileOutputStream writeobj=new FileOutputStream(fobjnew);
+			
+			FileInputStream readerobj=null;
+			byte buffer[]=new byte[100];
+			int ret=0;
+			
+			for(int i=0;i<allfiles.length;i++)
+			{
+				name=allfiles[i].getName();
+				if(name.endsWith("txt"))
+				{
+					readerobj=new FileInputStream(allfiles[i]);
+			
+					while((ret=readerobj.read(buffer))!=-1)
+					{
+							writeobj.write(buffer,0,ret);
+					}
+					readerobj.close();
+				}
+			}
+		}
+		catch(Exception obj)
+		{
+			System.out.println(obj);
+		}
+	}
 }
