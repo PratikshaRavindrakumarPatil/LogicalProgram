@@ -1,62 +1,72 @@
-/*
-OUTPUT:
-Enter number :
-6
-Entered number is: 6
-1       2       3
-
-Enter number :
--10
-Entered number is: -10
-1       2       5
-
-*/
 import java.lang.*;
 import java.util.*;
+import MatrixPackage.Matrix;
 
-class Number
+class MatrixX extends Matrix
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public void DisplayFactor()
+	public MatrixX(int a,int b)
 	{
-		int iCnt=0;
-		if(iNo<0)
+		super(a,b);
+	}
+	
+	public boolean CheckSquare()
+	{
+		int i=0,j=0;
+		int Count1=0,Count2=0;
+		
+		for(i=0;i<iRow;i++)
 		{
-			iNo=-iNo;
+			for(j=0;j<iCol;j++)
+			{
+				if(Arr[i][j]==0)
+				{
+					Count1++;
+				}
+				else
+				{
+					Count2++;
+				}
+				
+			}	
 		}
 		
-		for(iCnt=1;iCnt<=iNo/2;iCnt++)
+		if(Count1>Count2)
 		{
-			if((iNo%iCnt)==0)
-			{
-				System.out.print(iCnt+"\t");
-			}
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
+	
 }
 
 class program230
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-            nobj.Accept();
-            nobj.Display();
-
-            nobj.DisplayFactor();
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number of rows:");
+		int iRow=sobj.nextInt();
+		
+		System.out.println("Enter the number of columns:");
+		int iCol=sobj.nextInt();
+		
+		MatrixX mobj=new MatrixX(iRow,iCol);
+		mobj.Accept();
+		mobj.Display();
+		
+		
+		boolean bRet=mobj.CheckSquare();
+		if(bRet==true)
+		{
+			System.out.println("It is square matrix");
+		}
+		else
+		{
+			System.out.println("It is not square matrix");
+		}
+		
+	}
 }

@@ -1,65 +1,61 @@
-/*
-OUTPUT:
-
-Enter number :
-12
-Entered number is: 12
-6       4       3       2       1
-
-
-Enter number :
-20
-Entered number is: 20
-10      5       4       2       1
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class StringX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public void EvenFactor()
+	public String str;
+	
+	public StringX(String a)
 	{
-		int iCnt=0;
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
+		this.str=a;
+	}
+	
+	public boolean CheckVowel()
+	{
+		char Arr[]=str.toCharArray();
+		int CountS=0,CountC=0;
 		
-		for(iCnt=iNo/2;iCnt>=1;iCnt--)
+		int i=0;
+		for(i=0;i<Arr.length;i++)
 		{
-			if((iNo%iCnt)==0)
+			if((Arr[i]=='a')||(Arr[i]=='e')||(Arr[i]=='i')||(Arr[i]=='o')||(Arr[i]=='u')||(Arr[i]=='A')||(Arr[i]=='E')||(Arr[i]=='I')||(Arr[i]=='O')||(Arr[i]=='U'))
 			{
-					System.out.print(iCnt+"\t");
-				
+				break;
 			}
 		}
+		
+		if(i==Arr.length)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
+	
 }
 
 class program234
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-            nobj.Accept();
-            nobj.Display();
-
-            nobj.EvenFactor();
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the string:");
+		String str=sobj.nextLine();
+		
+		StringX obj=new StringX(str);
+		boolean bRet=obj.CheckVowel();
+		
+		if(bRet==true)
+		{
+			System.out.println("Vowels are present");
+		}
+		else
+		{
+			System.out.println("Vowels are not present");
+		}
+		
+		
+	}
 }

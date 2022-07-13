@@ -1,70 +1,49 @@
-/*
-OUTPUT:
-Enter number :
-
-Enter number :
-12
-Entered number is: 12
-Multiplication of factor is:144
-
-
-Enter number :
-4
-Entered number is: 4
-Multiplication of factor is:2
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class StringX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public int MultFactor()
+	public String str;
+	
+	public StringX(String a)
 	{
-		int iCnt=0;
-		int iMult=1;
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
+		this.str=a;
+	}
+	
+	public int Difference()
+	{
+		char Arr[]=str.toCharArray();
+		int CountS=0,CountC=0;
 		
-		for(iCnt=1;iCnt<=iNo/2;iCnt++)
+		
+		for(int i=0;i<Arr.length;i++)
 		{
-			if((iNo%iCnt)==0)
+			if((Arr[i]>='a')&&(Arr[i]<='z'))
 			{
-				iMult=iMult*iCnt;
+				CountS++;
+			}
+			else if((Arr[i]>='A')&&(Arr[i]<='Z'))
+			{
+				CountC++;
 			}
 		}
-		return iMult;
+		
+		return (CountS-CountC);
 	}
+	
 }
 
 class program233
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-	
-			int iRet=0;
-
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.MultFactor();
-			System.out.println("Multiplication of factor is:"+iRet);
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the string:");
+		String str=sobj.nextLine();
+		
+		StringX obj=new StringX(str);
+		int iRet=obj.Difference();
+		System.out.println("Difference between frequency of small and capital letter is:"+iRet);
+		
+	}
 }

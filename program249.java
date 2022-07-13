@@ -1,66 +1,46 @@
-/*
-OUTPUT:
-
-Enter the size of array:
-5
-Enter the number:
-11
-20
-22
-40
-21
-The number are:
-11      20      22      40      21
-Even number are:
-20      22      40
-
-*/
-
 import java.lang.*;
 import java.util.*;
 
-class N_Number
+class ArrayX
 {
-	private int Arr[];
+	public int iLength;
+	public int Arr[];
+	public int iStart;
+	public int iEnd;
 	
-	public N_Number(int iLength)
+	
+	public ArrayX(int a,int b,int c)
 	{
-		Arr=new int[iLength];
+		this.iLength=a;
+		this.Arr=new int[iLength];
+		this.iStart=b;
+		this.iEnd=c;
 	}
 	
 	public void Accept()
 	{
-		int iCnt=0;
+		int i=0;
 		Scanner sobj=new Scanner(System.in);
 		
 		System.out.println("Enter the number:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		for(i=0;i<Arr.length;i++)
 		{
-			Arr[iCnt]=sobj.nextInt();
+			Arr[i]=sobj.nextInt();
 		}
 	}
 	
 	public void Display()
 	{
-		int iCnt=0;
-		System.out.println("The number are:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		int i=0;
+		
+		
+		for(i=0;i<Arr.length;i++)
 		{
-			System.out.print(Arr[iCnt]+"\t");
-		}
-	}
-	
-	public void EvenNumber()
-	{
-		int iCnt=0;
-		System.out.println("\nEven number are:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
-		{
-			if((Arr[iCnt]%2)==0)
+			if(Arr[i]>iStart && Arr[i]<iEnd)
 			{
-				System.out.print(Arr[iCnt]+"\t");
+				System.out.print(Arr[i]+"\t");
 			}
-		}
+		}	
 	}
 	
 }
@@ -69,18 +49,19 @@ class program249
 {
 	public static void main(String arg[])
 	{
-		int iSize=0;
-		
 		Scanner sobj=new Scanner(System.in);
 		System.out.println("Enter the size of array:");
-		iSize=sobj.nextInt();
+		int iSize=sobj.nextInt();
 		
+		System.out.println("Enter the starting point:");
+		int iValue1=sobj.nextInt();
 		
-		N_Number nobj=new N_Number(iSize);
+		System.out.println("Enter the ending point:");
+		int iValue2=sobj.nextInt();
 		
-		nobj.Accept();
-		nobj.Display();
-		nobj.EvenNumber();
+		ArrayX obj=new ArrayX(iSize,iValue1,iValue2);
+		obj.Accept();
+		obj.Display();
 		
 	}
 }

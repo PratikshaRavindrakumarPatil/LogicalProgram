@@ -1,70 +1,63 @@
-/*
-OUTPUT:
-Enter number :
-
-Enter number :
-12
-Entered number is: 12
-Multiplication of factor is:144
-
-
-Enter number :
-4
-Entered number is: 4
-Multiplication of factor is:2
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class ArrayX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public int SumNonFactor()
+	public int iLength;
+	public int Arr[];
+	
+	public ArrayX(int a)
 	{
-		int iCnt=0;
-		int iSum=0;
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
+		this.iLength=a;
+		Arr=new int[iLength];
+	}
+	
+	public void Accept()
+	{
+		int i=0;
+		Scanner sobj=new Scanner(System.in);
 		
-		for(iCnt=1;iCnt<=iNo/2;iCnt++)
+		System.out.println("Enter the number:");
+		for(i=0;i<Arr.length;i++)
 		{
-			if((iNo%iCnt)==0)
+			Arr[i]=sobj.nextInt();
+		}
+	}
+	
+	public int Difference()
+	{
+		int i=0;
+		int iSumE=0,iSumO=0;
+		
+		for(i=0;i<Arr.length;i++)
+		{
+			if(Arr[i]%2==0)
 			{
-				iSum=iSum+iCnt;
+				iSumE=iSumE+Arr[i];
+			}
+			else
+			{
+				iSumO=iSumO+Arr[i];
 			}
 		}
-		return iSum;
+		
+		return (iSumE-iSumO);
 	}
+	
 }
 
 class program236
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-	
-			int iRet=0;
-
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.SumNonFactor();
-			System.out.println("Addition of non factor is:"+iRet);
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the size of array:");
+		int iSize=sobj.nextInt();
+		
+		ArrayX obj=new ArrayX(iSize);
+		obj.Accept();
+		int iRet=obj.Difference();
+		System.out.println("Difference between additon of even and odd number is:"+iRet);
+		
+	}
 }

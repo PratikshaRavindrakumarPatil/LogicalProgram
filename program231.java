@@ -1,66 +1,45 @@
-/*
-OUTPUT:
-Enter number :
-10
-Entered number is: 10
-2
-
-Enter number :
-12
-Entered number is: 12
-2       4       6
-
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class StringX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public void EvenFactor()
+	public String str;
+	
+	public StringX(String a)
 	{
-		int iCnt=0;
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
+		this.str=a;
+	}
+	
+	public int CountCap()
+	{
+		char Arr[]=str.toCharArray();
+		int Count=0;
 		
-		for(iCnt=1;iCnt<=iNo/2;iCnt++)
+		
+		for(int i=0;i<Arr.length;i++)
 		{
-			if((iNo%iCnt)==0)
+			if((Arr[i]>='A')&&(Arr[i]<='Z'))
 			{
-				if(iCnt%2==0)
-				{
-					System.out.print(iCnt+"\t");
-				}
+				Count++;
 			}
 		}
+		
+		return Count;
 	}
+	
 }
 
 class program231
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-            nobj.Accept();
-            nobj.Display();
-
-            nobj.EvenFactor();
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the string:");
+		String str=sobj.nextLine();
+		
+		StringX obj=new StringX(str);
+		int iRet=obj.CountCap();
+		System.out.println("Count of capital letter is:"+iRet);
+		
+	}
 }

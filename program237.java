@@ -1,82 +1,59 @@
-/*
-OUTPUT:
-Enter number :
-12
-Entered number is: 12
-Summation of factor:16
-Summation of no factor:50
-Difference between sumation of factor and no factor:-34
-
-
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class ArrayX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public int Difference()
+	public int iLength;
+	public int Arr[];
+	
+	public ArrayX(int a)
 	{
-		int iCnt=0;
-		int iSumF=0;
-		int iSumN=0;
-		
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
-		
-		
-		
-		for(iCnt=1;iCnt<=iNo/2;iCnt++)
-		{
-			if((iNo%iCnt)==0)
-			{
-				iSumF=iSumF+iCnt;
-			}
-			
-		}
-		System.out.println("Summation of factor:"+iSumF);
-		
-		for(iCnt=1;iCnt<=iNo;iCnt++)
-		{
-			if((iNo%iCnt)!=0)
-			{
-				iSumN=iSumN+iCnt;
-			}
-		}
-		System.out.println("Summation of no factor:"+iSumN);
-		
-		return(iSumF-iSumN);
+		this.iLength=a;
+		Arr=new int[iLength];
 	}
+	
+	public void Accept()
+	{
+		int i=0;
+		Scanner sobj=new Scanner(System.in);
+		
+		System.out.println("Enter the number:");
+		for(i=0;i<Arr.length;i++)
+		{
+			Arr[i]=sobj.nextInt();
+		}
+	}
+	
+	public int Summation()
+	{
+		int i=0;
+		int iSum=0;
+		
+		for(i=0;i<Arr.length;i++)
+		{
+			if(Arr[i]%5==0)
+			{
+				iSum=iSum+Arr[i];
+			}
+		}
+		
+		return iSum;
+	}
+	
 }
 
 class program237
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-	
-			int iRet=0;
-
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.Difference();
-			System.out.println("Difference between sumation of factor and no factor:"+iRet);
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the size of array:");
+		int iSize=sobj.nextInt();
+		
+		ArrayX obj=new ArrayX(iSize);
+		obj.Accept();
+		int iRet=obj.Summation();
+		System.out.println("Additon of such number which are divisible by 5:"+iRet);
+		
+	}
 }

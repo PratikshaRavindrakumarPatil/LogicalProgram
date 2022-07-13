@@ -1,78 +1,59 @@
-/*
-OUTPUT:
-
-Enter number :
-1232
-Entered number is : 1232
-The frequency of 2 is:2
-
-Enter number :
-111
-Entered number is : 111
-The frequency of 2 is:0
-
-
-Enter number :
-0000
-Entered number is : 0
-The frequency of 2 is:0
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class ArrayX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is : "+this.iNo);
-    }
-
-    public int Frequency()
+	public int iLength;
+	public int Arr[];
+	
+	public ArrayX(int a)
 	{
-		int iDigit=0;
-		int iCount=0;
-		
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
-		
-		while(iNo!=0)
-		{
-			iDigit=iNo%10;
-			if(iDigit==2)
-			{
-				iCount++;
-			}
-			iNo=iNo/10;
-		}
-		
-		
-		return iCount;
+		this.iLength=a;
+		Arr=new int[iLength];
 	}
+	
+	public void Accept()
+	{
+		int i=0;
+		Scanner sobj=new Scanner(System.in);
+		
+		System.out.println("Enter the number:");
+		for(i=0;i<Arr.length;i++)
+		{
+			Arr[i]=sobj.nextInt();
+		}
+	}
+	
+	public void Display()
+	{
+		int i=0;
+		int iSum=0;
+		
+		for(i=0;i<Arr.length;i++)
+		{
+			if(Arr[i]%11==0)
+			{
+				System.out.print(Arr[i]+"\t");
+			}
+		}
+		
+		
+	}
+	
 }
 
 class program240
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			int iRet=0;
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.Frequency();
-			System.out.println("The frequency of 2 is:"+iRet);
-			
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the size of array:");
+		int iSize=sobj.nextInt();
+		
+		ArrayX obj=new ArrayX(iSize);
+		obj.Accept();
+		obj.Display();
+		
+		
+	}
 }

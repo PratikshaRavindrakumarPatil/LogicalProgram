@@ -1,51 +1,45 @@
-/*
-OUTPUT:
-Enter the size of array:
-5
-Enter the number:
-11
-21
-51
-101
-121
-The number are:
-11      21      51      101     121
-
-
-*/
-
 import java.lang.*;
 import java.util.*;
 
-class N_Number
+class ArrayX
 {
-	private int Arr[];
+	public int iLength;
+	public int Arr[];
+	public int iNo;
 	
-	public N_Number(int iLength)
+	public ArrayX(int a,int b)
 	{
-		Arr=new int[iLength];
+		this.iLength=a;
+		this.Arr=new int[iLength];
+		this.iNo=b;
 	}
 	
 	public void Accept()
 	{
-		int iCnt=0;
+		int i=0;
 		Scanner sobj=new Scanner(System.in);
 		
 		System.out.println("Enter the number:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		for(i=0;i<Arr.length;i++)
 		{
-			Arr[iCnt]=sobj.nextInt();
+			Arr[i]=sobj.nextInt();
 		}
 	}
 	
-	public void Display()
+	public int FrequencyLast()
 	{
-		int iCnt=0;
-		System.out.println("The number are:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		int i=0;
+		
+		
+		for(i=Arr.length-1;i>=0;i--)
 		{
-			System.out.print(Arr[iCnt]+"\t");
+			if(Arr[i]==iNo)
+			{
+				break;
+			}
 		}
+		
+		return i;	
 	}
 	
 }
@@ -54,17 +48,18 @@ class program248
 {
 	public static void main(String arg[])
 	{
-		int iSize=0;
-		
 		Scanner sobj=new Scanner(System.in);
 		System.out.println("Enter the size of array:");
-		iSize=sobj.nextInt();
+		int iSize=sobj.nextInt();
+		
+		System.out.println("Enter the number that you want to search:");
+		int iValue=sobj.nextInt();
 		
 		
-		N_Number nobj=new N_Number(iSize);
-		
-		nobj.Accept();
-		nobj.Display();
+		ArrayX obj=new ArrayX(iSize,iValue);
+		obj.Accept();
+		int iRet=obj.FrequencyLast();
+		System.out.println(iValue+" last occured at index:"+iRet);
 		
 	}
 }

@@ -1,80 +1,65 @@
-/*
-OUTPUT:
-Enter number :
-12233
-Entered number is : 12233
-The Difference between summation of even and odd is:-3
-
-Enter number :
-8765
-Entered number is : 8765
-The Difference between summation of even and odd is:2
-
-Enter number :
-6450
-Entered number is : 6450
-The Difference between summation of even and odd is:5
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class ArrayX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is : "+this.iNo);
-    }
-
-    public int SumDiffrence()
+	public int iLength;
+	public int Arr[];
+	public int iNo;
+	
+	public ArrayX(int a,int b)
 	{
-		int iDigit=0;
-		int SumEven=0,SumOdd=0;
-		
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
-		
-		while(iNo!=0)
-		{
-			iDigit=iNo%10;
-			if((iDigit%2)==0)
-			{
-				SumEven=SumEven+iDigit;
-			}
-			else
-			{
-				SumOdd=SumOdd+iDigit;
-			}
-			iNo=iNo/10;
-		}
-		
-		return(SumEven-SumOdd);
+		this.iLength=a;
+		this.Arr=new int[iLength];
+		this.iNo=b;
 	}
+	
+	public void Accept()
+	{
+		int i=0;
+		Scanner sobj=new Scanner(System.in);
+		
+		System.out.println("Enter the number:");
+		for(i=0;i<Arr.length;i++)
+		{
+			Arr[i]=sobj.nextInt();
+		}
+	}
+	
+	public int FrequencyFirst()
+	{
+		int i=0;
+		
+		
+		for(i=0;i<Arr.length;i++)
+		{
+			if(Arr[i]==iNo)
+			{
+				break;
+			}
+		}
+		
+		return i;	
+	}
+	
 }
 
 class program247
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			int iRet=0;
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.SumDiffrence();
-			System.out.println("The Difference between summation of even and odd is:"+iRet);
-			
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the size of array:");
+		int iSize=sobj.nextInt();
+		
+		System.out.println("Enter the number that you want to search:");
+		int iValue=sobj.nextInt();
+		
+		
+		ArrayX obj=new ArrayX(iSize,iValue);
+		obj.Accept();
+		int iRet=obj.FrequencyFirst();
+		System.out.println(iValue+" first occured at index:"+iRet);
+		
+	}
 }

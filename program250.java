@@ -1,68 +1,45 @@
-/*
-OUTPUT:
-
-Enter the size of array:
-6
-Enter the number:
-12
-20
-21
-1
-4
-40
-
-The number are:
-12      20      21      1       4       40
-Addition of Even number is:76
-
-*/
-
 import java.lang.*;
 import java.util.*;
 
-class N_Number
+class ArrayX
 {
-	private int Arr[];
+	public int iLength;
+	public int Arr[];
 	
-	public N_Number(int iLength)
+	
+	public ArrayX(int a)
 	{
-		Arr=new int[iLength];
+		this.iLength=a;
+		this.Arr=new int[iLength];
+		
 	}
 	
 	public void Accept()
 	{
-		int iCnt=0;
+		int i=0;
 		Scanner sobj=new Scanner(System.in);
 		
 		System.out.println("Enter the number:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		for(i=0;i<Arr.length;i++)
 		{
-			Arr[iCnt]=sobj.nextInt();
+			Arr[i]=sobj.nextInt();
 		}
 	}
 	
-	public void Display()
+	public long Multiplication()
 	{
-		int iCnt=0;
-		System.out.println("The number are:");
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
-		{
-			System.out.print(Arr[iCnt]+"\t");
-		}
-	}
-	
-	public int SumEven()
-	{
-		int iCnt=0,iSum=0;
+		int i=0;
+		long iMult=1;
 		
-		for(iCnt=0;iCnt<Arr.length;iCnt++)
+		for(i=0;i<Arr.length;i++)
 		{
-			if((Arr[iCnt]%2)==0)
+			if(Arr[i]%2!=0)
 			{
-				iSum=iSum+Arr[iCnt];
+				iMult=iMult*Arr[i];
 			}
 		}
-		return iSum;
+		
+		return iMult;	
 	}
 	
 }
@@ -71,23 +48,14 @@ class program250
 {
 	public static void main(String arg[])
 	{
-		int iSize=0;
-		int iRet=0;
-		
-		
 		Scanner sobj=new Scanner(System.in);
 		System.out.println("Enter the size of array:");
-		iSize=sobj.nextInt();
+		int iSize=sobj.nextInt();
 		
-		
-		N_Number nobj=new N_Number(iSize);
-		
-		nobj.Accept();
-		System.out.println();
-		nobj.Display();
-		System.out.println();
-		iRet=nobj.SumEven();
-		System.out.println("Addition of Even number is:"+iRet);
+		ArrayX obj=new ArrayX(iSize);
+		obj.Accept();
+		long iRet=obj.Multiplication();
+		System.out.println("Multiplication of off number is:"+iRet);
 		
 	}
 }

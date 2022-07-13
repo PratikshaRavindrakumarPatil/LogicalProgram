@@ -1,88 +1,59 @@
-/*
-OUTPUT:
-
-Enter number :
-202
-Entered number is : 202
-There is zero
-
-Enter number :
-12345
-Entered number is : 12345
-There is no zero
-
-
-*/
 import java.lang.*;
 import java.util.*;
 
-class Number
+class ArrayX
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is : "+this.iNo);
-    }
-
-    public boolean CheckDigit()
+	public int iLength;
+	public int Arr[];
+	
+	public ArrayX(int a)
 	{
-		int iDigit=0;
-		boolean Flag=false;
-		
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
-		
-		while(iNo!=0)
-		{
-			iDigit=iNo%10;
-			if(iDigit==0)
-			{
-				Flag=true;
-				break;
-			}
-			iNo=iNo/10;
-		}
-		
-		if(Flag==true)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
+		this.iLength=a;
+		Arr=new int[iLength];
 	}
+	
+	public void Accept()
+	{
+		int i=0;
+		Scanner sobj=new Scanner(System.in);
+		
+		System.out.println("Enter the number:");
+		for(i=0;i<Arr.length;i++)
+		{
+			Arr[i]=sobj.nextInt();
+		}
+	}
+	
+	public int Summation()
+	{
+		int i=0;
+		int iSum=0;
+		
+		for(i=0;i<Arr.length;i++)
+		{
+			if((Arr[i]%5==0)&&(Arr[i]%3==0))
+			{
+				iSum=iSum+Arr[i];
+			}
+		}
+		
+		return iSum;
+	}
+	
 }
 
 class program239
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			boolean bRet=false;
-            nobj.Accept();
-            nobj.Display();
-
-            bRet=nobj.CheckDigit();
-			if(bRet==true)
-			{
-				System.out.println("There is zero");
-			}
-			else
-			{
-				System.out.println("There is no zero");
-			}
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the size of array:");
+		int iSize=sobj.nextInt();
+		
+		ArrayX obj=new ArrayX(iSize);
+		obj.Accept();
+		int iRet=obj.Summation();
+		System.out.println("Additon of such number which are divisible by 5 and 3 are:"+iRet);
+		
+	}
 }
