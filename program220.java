@@ -1,85 +1,57 @@
-/*
-OUTPUT:
-
-Enter the number of rows:
-6
-Enter the number of columns:
-6
-Rows:6
-Columns:6
-*       *       *       *       *       *
-*                               *       *
-*                       *               *
-*               *                       *
-*       *                               *
-*       *       *       *       *       *
-
-
-*/
-
 import java.lang.*;
 import java.util.*;
-
-class Pattern
-{
-	private int iRow,iCol;
-	
-	public void Accept()
-	{
-		Scanner sobj=new Scanner(System.in);
-		
-		System.out.println("Enter the number of rows:");
-		iRow=sobj.nextInt();
-		
-		System.out.println("Enter the number of columns:");
-		iCol=sobj.nextInt();
-	}
-	
-	public void Display()
-	{
-		System.out.println("Rows:"+iRow);
-		System.out.println("Columns:"+iCol);
-	}
-	
-	public void DisplayPattern()
-	{
-		int i=0,j=0;
-		
-		if(iRow!=iCol)
-		{
-			System.out.println("Please enter square dimensions.");
-			return;
-		}
-		for(i=1;i<=iRow;i++)
-		{
-			for(j=iCol;j>=1;j--)
-			{
-					
-					if((j==1)||(j==iCol)||(i==1)||(i==iRow)||(j==i))
-					{
-						
-						System.out.print("*\t");
-					}
-					else
-					{
-						System.out.print("\t");
-					}
-			}
-			System.out.println();
-		}
-	}
-	
-}
+import java.io.*;
 
 class program220
 {
-	public static void main(String arg[])
-	{
-		Pattern pobj=new Pattern();
-		
-		pobj.Accept();
-		pobj.Display();
-		pobj.DisplayPattern();
-		
-	}
+    public static void main(String arg[])
+    {
+        try
+        {
+            Scanner sobj = new Scanner(System.in);
+
+            System.out.println("Enter the directory name:");
+            String foldername= sobj.nextLine();
+
+            File dobj = new File(foldername);
+
+            File allfiles[] = dobj.listFiles();
+            String name;
+
+            File fobj=new File("Combine.txt");
+            boolean bobj = fobj.createNewFile();
+            FileOutputStream writerobj = new FileOutputStream(fobj);
+
+            FileInputStream readerobj = null;
+            int ret = 0;
+            byte buffer[] = new byte[100];
+
+            for(int i = 0; i < allfiles.length; i++)
+            {
+                    name = allfiles[i].getName();
+
+                    if(name.endsWith(".txt"))
+                    {
+                        name = name +" "+(allfiles[i].length());
+                        System.out.println(name);
+                        
+                        byte namearray[] = name.getBytes();
+                        writerobj.write(namearray,0,namearray.length);
+
+                        readerobj = new FileInputStream(allfiles[i]);
+
+                        while((ret = readerobj.read(buffer)) != -1)
+                        {
+                                writerobj.write(buffer,0,ret);
+                        }
+                        readerobj.close();
+                    }
+            }
+        }
+        catch(Exception obj)
+        {
+            System.out.println(obj);
+        }
+
+    }
 }

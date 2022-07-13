@@ -1,65 +1,46 @@
-/*
-OUTPUT:
-
-Enter number :
-4
-Entered number is: 4
-*  *  *  *
-
-Enter number :
--10
-Entered number is: -10
-*  *  *  *  *  *  *  *  *  *
-
-
-Enter number :
-0
-Entered number is: 0
-
-*/
 import java.lang.*;
 import java.util.*;
+import MatrixPackage.Matrix;
 
-class Number
+class MatrixX extends Matrix
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public void DisplayNumber()
+	public MatrixX(int a,int b)
 	{
-		int iCnt=0;
-		if(iNo<0)
-		{
-			iNo=-iNo;
-		}
+		super(a,b);
+	}
+	
+	public void Addition()
+	{
+		int i=0,j=0;
+		int iSum=0;
 		
-		for(iCnt=1;iCnt<=iNo;iCnt++)
+		for(i=0;i<iRow;i++)
 		{
-			System.out.print("*"+"  ");
+			for(j=0;j<iCol;j++)
+			{
+				iSum=iSum+Arr[j][i];
+			}
+			System.out.print(iSum+"\t");
+			iSum=0;
 		}
 	}
+	
 }
 
 class program224
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-            nobj.Accept();
-            nobj.Display();
-
-            nobj.DisplayNumber();
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number of rows:");
+		int iRow=sobj.nextInt();
+		
+		System.out.println("Enter the number of columns:");
+		int iCol=sobj.nextInt();
+		
+		MatrixX mobj=new MatrixX(iRow,iCol);
+		mobj.Accept();
+		mobj.Display();
+		mobj.Addition();
+	}
 }

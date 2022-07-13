@@ -1,74 +1,59 @@
-/*
-
-OUTPUT:
-
-Enter number :
-5
-Value is : 5
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-
-
-Enter number :
--10
-Value is : -10
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-Marvellous
-*/
 import java.lang.*;
 import java.util.*;
 
 class Number
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Value is : "+this.iNo);
-    }
-
-    public void DisplayName()
+	public int Display(int iRow,int iCol,int iNo)
 	{
-		int iCnt=0;
-		if(iNo<0)
+		Scanner sobj=new Scanner(System.in);
+		int Arr[][]=new int[iRow][iCol];
+		
+		System.out.println("Enter the number:");
+		int i=0,j=0;
+		for(i=0;i<iRow;i++)
 		{
-			iNo=-iNo;
+			for(j=0;j<iCol;j++)
+			{
+				Arr[i][j]=sobj.nextInt();
+			}
 		}
 		
-		for(iCnt=1;iCnt<=iNo;iCnt++)
+		int Count=0;
+		
+		for(i=0;i<iRow;i++)
 		{
-			System.out.println("Marvellous");
+			for(j=0;j<iCol;j++)
+			{
+				if(Arr[i][j]==iNo)
+				{
+					Count++;
+				}
+			}
 		}
+		
+		return Count;
 	}
 }
 
+
 class program222
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-            nobj.Accept();
-            nobj.Display();
-
-            nobj.DisplayName();
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number of rows:");
+		int iRow=sobj.nextInt();
+		
+		System.out.println("Enter the number of columns:");
+		int iCol=sobj.nextInt();
+		
+		System.out.println("Enter the number that want search:");
+		int no=sobj.nextInt();
+		
+		Number obj=new Number();
+		int iRet=obj.Display(iRow,iCol,no);
+		System.out.println(no+" occures :"+iRet+" times");
+		
+		
+	}
 }

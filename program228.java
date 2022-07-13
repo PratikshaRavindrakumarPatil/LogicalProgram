@@ -1,75 +1,51 @@
-/*
-OUTPUT:
-
-Enter number :
-10
-Entered number is: 10
-Given number is even.
-
-Enter number :
--1
-Entered number is: -1
-Given number is odd.
-
-Enter number :
-21
-Entered number is: 21
-Given number is odd.
-
-
-*/
 import java.lang.*;
 import java.util.*;
+import MatrixPackage.Matrix;
 
-class Number
+class MatrixX extends Matrix
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public boolean CheckEven()
+	public MatrixX(int a,int b)
 	{
-		if(iNo%2==0)
+		super(a,b);
+	}
+	
+	public void ReverseCol()
+	{
+		int i=0,j=0;
+		
+		
+		for(i=iRow-1;i>=0;i--)
 		{
-			return true;
-		}
-		else
-		{
-			return false;
+			for(j=0;j<iCol;j++)
+			{
+				System.out.print(Arr[i][j]+"\t");
+				
+			}
+			System.out.println();
+			
 		}
 	}
+	
 }
 
 class program228
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			boolean bRet=false;
-			
-            nobj.Accept();
-            nobj.Display();
-
-            bRet=nobj.CheckEven();
-			if(bRet==true)
-			{
-				System.out.println("Given number is even.");
-			}
-			else
-			{
-				System.out.println("Given number is odd.");
-			}
-			
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number of rows:");
+		int iRow=sobj.nextInt();
+		
+		System.out.println("Enter the number of columns:");
+		int iCol=sobj.nextInt();
+		
+		MatrixX mobj=new MatrixX(iRow,iCol);
+		mobj.Accept();
+		mobj.Display();
+		
+		System.out.println("After reverse columns:");
+		mobj.ReverseCol();
+		
+		
+	}
 }

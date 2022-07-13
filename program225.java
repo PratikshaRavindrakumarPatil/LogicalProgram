@@ -1,75 +1,53 @@
-/*
-OUTPUT:
-
-Enter number :
-200
-Entered number is: 200
-Given number is divisible by 5.
-
-Enter number :
--10
-Entered number is: -10
-Given number is divisible by 5.
-
-Enter number :
-212
-Entered number is: 212
-Given number is not divisible by 5.
-
-
-*/
 import java.lang.*;
 import java.util.*;
+import MatrixPackage.Matrix;
 
-class Number
+class MatrixX extends Matrix
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public boolean CheckDivisible()
+	public MatrixX(int a,int b)
 	{
-		if(iNo%5==0)
+		super(a,b);
+	}
+	
+	public void SwapRow()
+	{
+		int i=0,j=0;
+		int iTemp=0;
+		
+		for(i=0;i<iRow-1;i=i+2)
 		{
-			return true;
-		}
-		else
-		{
-			return false;
+			for(j=0;j<iCol;j++)
+			{
+				iTemp=Arr[i][j];
+				Arr[i][j]=Arr[i+1][j];
+				Arr[i+1][j]=iTemp;
+				
+			}
+			System.out.println();
+			
 		}
 	}
+	
 }
 
 class program225
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-			boolean bRet=false;
-			
-            nobj.Accept();
-            nobj.Display();
-
-            bRet=nobj.CheckDivisible();
-			if(bRet==true)
-			{
-				System.out.println("Given number is divisible by 5.");
-			}
-			else
-			{
-				System.out.println("Given number is not divisible by 5.");
-			}
-			
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number of rows:");
+		int iRow=sobj.nextInt();
+		
+		System.out.println("Enter the number of columns:");
+		int iCol=sobj.nextInt();
+		
+		MatrixX mobj=new MatrixX(iRow,iCol);
+		mobj.Accept();
+		mobj.Display();
+		
+		System.out.println("After swapping rows:");
+		mobj.SwapRow();
+		mobj.Display();
+		
+	}
 }

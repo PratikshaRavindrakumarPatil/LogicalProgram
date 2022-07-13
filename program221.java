@@ -1,77 +1,70 @@
 /*
-OUTPUT:
 
-Enter first number:
-10
-Enter Second number:
+Enter number of rows:
+4
+Enter number of coloumn:
+4
+Enter the number:
 11
-Value is : 10
-Value is : 11
-Addition is:21
-
-
-Enter first number:
--12
-Enter Second number:
-1
-Value is : -12
-Value is : 1
-Addition is:13
+21
+10
+20
+22
+12
+23
+34
+44
+3
+3
+4
+5
+6
+7
+8
+Addition of diagonal number is:34
 
 */
 import java.lang.*;
 import java.util.*;
 
-class Number
-{
-    private int iNo1,iNo2;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter first number: ");
-        this.iNo1 = sobj.nextInt();
-		
-		System.out.println("Enter Second number: ");
-        this.iNo2 = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Value is : "+this.iNo1);
-		System.out.println("Value is : "+this.iNo2);
-   }
-
-    public int Addition()
-	{
-		if(iNo1<0)
-		{
-			iNo1=-iNo1;
-		}
-		if(iNo2<0)
-		{
-			iNo2=-iNo2;
-		}
-		
-		int iAns=0;
-		iAns=iNo1+iNo2;
-		return iAns;
-	}
-}
 
 class program221
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
 		
-			int iRet=0;
-			
-            nobj.Accept();
-            nobj.Display();
-
-            iRet=nobj.Addition();
-			System.out.println("Addition is:"+iRet);
-			
-    }
+		System.out.println("Enter number of rows:");
+		int iRow=sobj.nextInt();
+		
+		System.out.println("Enter number of coloumn:");
+		int iCol=sobj.nextInt();
+		
+		System.out.println("Enter the number:");
+		int i=0,j=0;
+		int Arr[][]=new int[iRow][iCol]; 
+		
+		for(i=0;i<iRow;i++)
+		{
+			for(j=0;j<iCol;j++)
+			{
+				Arr[i][j]=sobj.nextInt();
+			}
+		}
+		
+		int iSum=0;
+		
+		for(i=0;i<iRow;i++)
+		{
+			for(j=0;j<iCol;j++)
+			{
+				if(j==i)
+				{
+					iSum=iSum+Arr[i][j];
+				}
+			}
+		}
+		
+		System.out.println("Addition of diagonal number is:"+iSum);
+	}
 }

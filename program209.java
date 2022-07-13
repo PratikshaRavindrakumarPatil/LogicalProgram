@@ -1,84 +1,33 @@
-/*
-OUTPUT:
-
-Enter the number of rows:
-6
-Enter the number of columns:
-6
-Rows:6
-Columns:6
-                                        *
-                                *
-                        *
-                *
-        *
-*
-
-*/
-
-import java.lang.*;
+import java.io.*;
 import java.util.*;
-
-class Pattern
-{
-	private int iRow,iCol;
-	
-	public void Accept()
-	{
-		Scanner sobj=new Scanner(System.in);
-		
-		System.out.println("Enter the number of rows:");
-		iRow=sobj.nextInt();
-		
-		System.out.println("Enter the number of columns:");
-		iCol=sobj.nextInt();
-	}
-	
-	public void Display()
-	{
-		System.out.println("Rows:"+iRow);
-		System.out.println("Columns:"+iCol);
-	}
-	
-	public void DisplayPattern()
-	{
-		int i=0,j=0;
-		
-		if(iRow!=iCol)
-		{
-			System.out.println("Please enter square dimensions.");
-			return;
-		}
-		for(i=1;i<=iRow;i++)
-		{
-			for(j=iCol;j>=1;j--)
-			{
-					
-					if(j==i)
-					{
-						
-						System.out.print("*\t");
-					}
-					else
-					{
-						System.out.print("\t");
-					}
-			}
-			System.out.println();
-		}
-	}
-	
-}
 
 class program209
 {
-	public static void main(String arg[])
+	public static void main(String arg[]) throws Exception
 	{
-		Pattern pobj=new Pattern();
+		Scanner sobj=new Scanner(System.in);
+	
+		System.out.println("Enter the file name:");
+		String fname=sobj.nextLine();
 		
-		pobj.Accept();
-		pobj.Display();
-		pobj.DisplayPattern();
+		
+		File fobj=new File(fname);
+		
+		try
+		{
+			if(fobj.createNewFile())
+			{
+				System.out.println("File is successfully created of name:"+fobj.getName());
+			}
+			else
+			{
+				System.out.println("File is already exist");
+			}
+		}
+		catch(Exception obj)
+		{
+		}
+		
 		
 	}
 }

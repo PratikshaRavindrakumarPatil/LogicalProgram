@@ -1,63 +1,74 @@
-/*
-OUTPUT:
-
-Enter number :
-5
-Entered number is: 5
-2       4       6       8       10
-
-Enter number :
--6
-Entered number is: -6
-2       4       6       8       10      12
-
-*/
 import java.lang.*;
 import java.util.*;
+import MatrixPackage.Matrix;
 
-class Number
+class MatrixX extends Matrix
 {
-    private int iNo;
-
-    public void Accept()
-    {
-        Scanner sobj = new Scanner(System.in);
-        System.out.println("Enter number : ");
-        this.iNo = sobj.nextInt();
-    }
-
-    public void Display()
-    {
-        System.out.println("Entered number is: "+this.iNo);
-    }
-
-    public void DisplayNumber()
+	public MatrixX(int a,int b)
 	{
-		int iCnt=0;
-		if(iNo<0)
+		super(a,b);
+	}
+	
+	public boolean CheckIdentity()
+	{
+		int i=0,j=0;
+		
+		
+		for(i=0;i<iRow;i++)
 		{
-			iNo=-iNo;
+			for(j=0;j<iCol;j++)
+			{
+				if(i==j)
+				{
+					if(Arr[i][j]!=1)
+					{
+						break;
+					}
+				}
+				else if(Arr[i][j]!=0)
+				{
+					break;
+				}
+			}	
 		}
 		
-		for(iCnt=1;iCnt<=iNo*2;iCnt++)
-		{
-			if(iCnt%2==0)
+		if(i==iRow)
 			{
-				System.out.print(iCnt+"\t");
+				return true;
 			}
-		}
+			else
+			{
+				return false;
+			}
 	}
+	
 }
 
 class program229
 {
-    public static void main(String b[])
-    {
-            Number nobj = new Number();
-
-            nobj.Accept();
-            nobj.Display();
-
-            nobj.DisplayNumber();
-    }
+	public static void main(String arg[])
+	{
+		Scanner sobj=new Scanner(System.in);
+		System.out.println("Enter the number of rows:");
+		int iRow=sobj.nextInt();
+		
+		System.out.println("Enter the number of columns:");
+		int iCol=sobj.nextInt();
+		
+		MatrixX mobj=new MatrixX(iRow,iCol);
+		mobj.Accept();
+		mobj.Display();
+		
+		
+		boolean bRet=mobj.CheckIdentity();
+		if(bRet==true)
+		{
+			System.out.println("It is identity matrix");
+		}
+		else
+		{
+			System.out.println("It is not identity matrix");
+		}
+		
+	}
 }
